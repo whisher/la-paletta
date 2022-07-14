@@ -1,0 +1,15 @@
+overwrite: true
+schema: ${NEXT_PUBLIC_GRAPHCMS_URL}
+documents: './graphcms/queries/*.graphql'
+generates:
+  ./graphcms/generated/schema.ts:
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typed-document-node'
+    config:
+      avoidOptionals: true
+      #immutableTypes: true
+      useTypeImports: true

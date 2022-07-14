@@ -1,0 +1,11 @@
+query getCategories($stage: Stage = PUBLISHED) {
+	categories(stage: $stage) {
+		name
+		slug
+	}
+}
+query getCategoriesSlug($stage: Stage = PUBLISHED) {
+	categories(stage: $stage) {
+		slug
+	}
+}
