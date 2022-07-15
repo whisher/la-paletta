@@ -16,8 +16,8 @@
 		"incremental": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/components/*": ["components/*"],
-			"@/graphcms/*": ["graphcms/*"]
+			"@/components/*": ["lib/components/*"],
+			"@/graphcms/*": ["lib/graphcms/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

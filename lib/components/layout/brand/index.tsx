@@ -1,9 +1,10 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { SITE_TITLE } from '../../../costants';
 
-const Brand = () => {
+const Brand: React.FC = () => {
 	return (
 		<h1>
 			<Link href="/">

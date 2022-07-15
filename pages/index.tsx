@@ -1,16 +1,11 @@
 import { GetStaticProps } from 'next';
 import type { NextPage } from 'next';
 
-import { client } from '@/graphcms/client';
+import { loadFromCms } from '@/graphcms/client';
 import { GetCategoriesDocument, GetCategoriesQuery } from '@/graphcms/generated/schema';
 
-export const getCategories = async (): Promise<GetCategoriesQuery | undefined> => {
-	const result = await client.query(GetCategoriesDocument).toPromise();
-	return result?.data;
-};
-
 export const getStaticProps: GetStaticProps = async () => {
-	const data = await getCategories();
+	const data = await loadFromCms(GetCategoriesDocument);
 	return {
 		props: {
 			data

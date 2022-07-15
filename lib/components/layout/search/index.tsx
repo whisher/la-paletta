@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-const MarketSearch = () => {
+const Search = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const toggleIsVisible = () => {
 		setIsVisible((isVisible) => !isVisible);
@@ -33,4 +33,4 @@ const MarketSearch = () => {
 	);
 };
 
-export { MarketSearch };
+export { Search };
