@@ -1,1 +1,4 @@
-export const route_chi_siamo = '/chi-siamo';
+export const routes = {
+	about: '/about',
+	shop: '/shop'
+};

@@ -1,22 +1,39 @@
 import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { Brand } from '../brand';
-import { Menu } from '../menu';
+import { routes } from '../../../costants';
 
-export interface NavProps {
-	isHeaderVisible: boolean;
-}
-const Nav: React.FC<NavProps> = ({ isHeaderVisible }) => {
+const Nav: React.FC = () => {
+	const router = useRouter();
+	const { about, shop } = routes;
+	const common =
+		'h-[30px] flex items-center leading-4 px-[9px] shadow-sm rounded-xl uppercase tracking-tight backdrop-blur-2xl transition ease-in-out duration-300';
+	const isActiveLink = (path: string): string => {
+		if (router.pathname === path) {
+			return `${common} bg-black/90 text-white`;
+		}
+		return `${common} bg-white/90`;
+	};
 	return (
-		<nav className="sticky top-0 h-[70px] bg-gradient-to-r from-brand-300 to-brand-200 flex ">
-			<div
-				className={`transition-transform ${
-					isHeaderVisible ? 'opacity-0 -translate-y-full' : 'opacity-100  translate-y-0'
-				}`}
-			>
-				<Brand />
-			</div>
-			<Menu />
+		<nav>
+			<ul className="flex gap-x-4">
+				<li>
+					<Link href="/">
+						<a className={isActiveLink('/')}>Home</a>
+					</Link>
+				</li>
+				<li>
+					<Link href={shop}>
+						<a className={isActiveLink(shop)}>Shop</a>
+					</Link>
+				</li>
+				<li>
+					<Link href={about}>
+						<a className={isActiveLink(about)}>Chi Siamo</a>
+					</Link>
+				</li>
+			</ul>
 		</nav>
 	);
 };

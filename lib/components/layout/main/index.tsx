@@ -9,9 +9,7 @@ const Main: React.FC<MainProps> = ({ children }) => {
 	return (
 		<>
 			<Header />
-			<main className="container mx-auto text-black min-h-[calc(100vh-100px)] bg-red-100">
-				{children}
-			</main>
+			<main className="px-8 text-black">{children}</main>
 			<Footer />
 		</>
 	);

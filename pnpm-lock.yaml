@@ -20,7 +20,6 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: ^4.4.0
-  react-intersection-observer: ^9.3.5
   tailwindcss: ^3.1.4
   typescript: 4.7.4
   urql: ^2.2.2
@@ -37,7 +36,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
-  react-intersection-observer: 9.3.5_react@18.2.0
   urql: 2.2.2_aez2jvt6lsvokp3l4ousdbdxf4
 
 devDependencies:
@@ -4027,14 +4025,6 @@ packages:
     resolution: {integrity: sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==}
     peerDependencies:
       react: '*'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
-  /react-intersection-observer/9.3.5_react@18.2.0:
-    resolution: {integrity: sha512-TiJXVUapzAaIrZCAMBLjyWvwGYNGm0Xpkcwm3NY23b9PsJEBavul0hRFmrwc/LOmBUA/8TlkjCj7lCvjM0q1Hg==}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
     dependencies:
       react: 18.2.0
     dev: false

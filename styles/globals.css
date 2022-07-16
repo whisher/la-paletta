@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ripple {
+	background-position: center;
+	transition: background 0.8s;
+}
+.ripple:hover {
+	background: #f9813a radial-gradient(circle, transparent 1%, #f9813a 1%) center/15000%;
+}
+.ripple:active {
+	background-color: #ffd5cd;
+	background-size: 100%;
+	transition: background 0s;
+}
