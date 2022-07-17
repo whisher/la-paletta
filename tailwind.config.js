@@ -8,7 +8,9 @@ module.exports = {
 				brand: {
 					100: '#fcf1f1',
 					200: '#ffd5cd',
-					300: '#f9813a'
+					300: '#9AE66E', // green
+					400: '#ff884f', // orange
+					500: '#00c2ff' // blue
 				},
 				gray: {
 					300: '#cbd5e1',

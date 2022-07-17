@@ -14,3 +14,9 @@
 	background-size: 100%;
 	transition: background 0s;
 }
+.one {
+	background-color: red;
+	height: 100px;
+	width: 500px;
+	clip-path: polygon(100% 0, 0 0, 50% 100%);
+}

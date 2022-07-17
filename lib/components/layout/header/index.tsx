@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import classNames from 'classNames';
 import { Brand } from '../brand';
 import { Nav } from '../nav';
 
@@ -16,13 +16,12 @@ const Header: React.FC = () => {
 		window.addEventListener('scroll', onScroll, false);
 		return () => window.removeEventListener('scroll', onScroll);
 	}, []);
-
+	const classes = classNames(
+		`sticky top-0 z-50 h-20 origin-top flex justify-between items-center px-8 transition duration-500`,
+		{ 'bg-brand-300/70 scale-y-90': isScrolled, 'bg-brand-300 scale-y-100': !isScrolled }
+	);
 	return (
-		<header
-			className={`sticky top-0 z-50 h-20 flex justify-between items-center px-8 transition duration-500  ${
-				isScrolled ? 'bg-brand-300/70' : 'bg-brand-300'
-			}`}
-		>
+		<header className={classes}>
 			<Brand />
 			<Nav />
 			<ul className="flex justify-between items-center gap-x-4">
