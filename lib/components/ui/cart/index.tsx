@@ -14,10 +14,10 @@ const Sidebar = () => {
 				</button>
 			) : (
 				<button
-					className="flex justify-center items-center h-10 w-10 rounded-full bg-white mix-blend-lighten"
+					className="flex justify-center items-center p-1 rounded-full bg-white border-2 border-white"
 					onClick={() => setShowSidebar(!showSidebar)}
 				>
-					<AiOutlineShoppingCart className=" w-8 h-8" />
+					<AiOutlineShoppingCart className="text-brand-300 w-8 h-8" />
 				</button>
 			)}
 

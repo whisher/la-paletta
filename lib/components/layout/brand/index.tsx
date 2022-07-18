@@ -8,7 +8,7 @@ const Brand: React.FC = () => {
 	return (
 		<h1>
 			<Link href="/">
-				<a>
+				<a className="block">
 					<Image src="/images/logo.png" alt={SITE_TITLE} width={70} height={70} />
 				</a>
 			</Link>

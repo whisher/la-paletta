@@ -3,8 +3,8 @@ import classNames from 'classNames';
 import { Brand } from '../brand';
 import { Nav } from '../nav';
 
-import { Search } from '../search';
-import { Sidebar } from '../cart';
+import { Search } from '@/components/ui/search';
+import { Sidebar } from '@/components/ui/cart';
 
 const Header: React.FC = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
