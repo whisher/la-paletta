@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 	});
 	return (
 		<>
-			<div className="min-h-[calc(100vh-theme(space.20))]  flex justify-center items-center before:content-[''] before:absolute before:w-full before:h-full  before:bg-[url('/images/home-bck.webp')] before:bg-no-repeat before:bg-center before:bg-cover before:blur-3xl px-8">
+			<div className="min-h-[calc(100vh-theme(space.20))]  flex justify-center items-center before:content-[''] before:absolute before:w-full before:h-full  before:bg-[url('/images/home2-bck.jpg')] before:bg-no-repeat before:bg-center before:bg-cover before:blur-3xl px-8">
 				<div className="relative mx-auto bg-white">
 					{categories ? <CategoriesList data={categories} /> : null}
 				</div>

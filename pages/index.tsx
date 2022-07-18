@@ -15,7 +15,6 @@ type HomePageProps = {
 };
 
 const HomePage: NextPage<HomePageProps> = ({ data }) => {
-	console.log('me', data);
 	return <Home data={data} />;
 };
 
