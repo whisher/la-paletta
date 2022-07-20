@@ -8,11 +8,11 @@ export interface CategoriesListProps {
 }
 const CategoriesList: React.FC<CategoriesListProps> = ({ data }) => {
 	return (
-		<div className="grid grid-cols-3 gap-4">
+		<section className="relative w-full grid grid-cols-3  place-items-center gap-16">
 			{data.map((category) => (
 				<Category key={category.slug} data={category} />
 			))}
-		</div>
+		</section>
 	);
 };
 

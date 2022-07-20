@@ -1,7 +1,12 @@
 import type { NextPage } from 'next';
+import { Button } from '@/components/ui/button';
 
 const About: NextPage = () => {
-	return <h1 className="text-3xl font-bold underline">Hello world about!</h1>;
+	return (
+		<div className="h-screen flex justify-center items-center">
+			<Button>buy</Button>
+		</div>
+	);
 };
 
 export default About;

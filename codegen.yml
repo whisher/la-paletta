@@ -1,8 +1,8 @@
 overwrite: true
 schema: ${NEXT_PUBLIC_GRAPHCMS_URL}
-documents: './graphcms/queries/*.graphql'
+documents: './lib/graphcms/queries/*.graphql'
 generates:
-  ./graphcms/generated/schema.ts:
+  ./lib/graphcms/generated/schema.ts:
     plugins:
       - add:
           content: '/* eslint-disable */'

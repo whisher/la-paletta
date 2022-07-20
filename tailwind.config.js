@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	content: ['./pages/**/*.{js,ts,jsx,tsx}', './lib/components/**/*.{js,ts,jsx,tsx}'],
 	theme: {
@@ -16,6 +19,9 @@ module.exports = {
 					300: '#cbd5e1',
 					400: '#94a3b8'
 				}
+			},
+			fontFamily: {
+				sans: ['Space Grotesk', ...defaultTheme.fontFamily.sans]
 			}
 		}
 	},

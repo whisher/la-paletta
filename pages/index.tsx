@@ -15,7 +15,8 @@ type HomePageProps = {
 };
 
 const HomePage: NextPage<HomePageProps> = ({ data }) => {
-	return <Home data={data} />;
+	const categories = data?.categories;
+	return categories ? <Home data={categories} /> : null;
 };
 
 export default HomePage;

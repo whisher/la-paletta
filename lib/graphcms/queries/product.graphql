@@ -1,0 +1,11 @@
+query ProductsSlugCategory($slug: String!, $stage: Stage = PUBLISHED) {
+	categories(where: { slug: $slug }, stage: $stage) {
+		name
+		products {
+			id
+			name
+			price
+			slug
+		}
+	}
+}
