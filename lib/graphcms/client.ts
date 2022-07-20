@@ -1,5 +1,5 @@
 import { createClient, OperationContext } from 'urql';
-import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
+//import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import type { DocumentNode } from 'graphql';
 
 const client = createClient({
@@ -15,7 +15,7 @@ export async function loadFromCms<
 	Data = Map<string, unknown>,
 	Variables extends object = Record<string, unknown>
 >(
-	query: DocumentNode | TypedDocumentNode<Data, Variables> | string,
+	query: DocumentNode,
 	variables?: Variables,
 	context?: Partial<OperationContext>
 ): Promise<{
