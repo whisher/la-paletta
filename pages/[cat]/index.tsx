@@ -17,11 +17,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	});
 	return {
 		paths,
-		fallback: false // false or 'blocking'
+		fallback: false
 	};
 };
+
 export const getStaticProps: GetStaticProps = async (context) => {
-	const slug = 'spray'; //context.params;
+	const slug = context.params?.cat;
 	return await loadFromCms(ProductsSlugCategoryDocument, {
 		slug
 	});
@@ -30,7 +31,6 @@ type ShopPageProps = {
 	data: ProductsSlugCategoryQuery | undefined;
 };
 const Shopd: NextPage<ShopPageProps> = ({ data }) => {
-	console.log('shp', data);
 	return <h1 className="text-3xl font-bold underline">dddHello world Shop!i</h1>;
 };
 
