@@ -10,14 +10,9 @@
 		"codegen": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config codegen.yml"
 	},
 	"dependencies": {
-		"@graphql-codegen/add": "^3.2.0",
-		"@graphql-codegen/cli": "^2.8.0",
-		"@graphql-codegen/typed-document-node": "^2.3.1",
-		"@graphql-codegen/typescript": "^2.7.1",
-		"@graphql-codegen/typescript-operations": "^2.5.1",
-		"@graphql-typed-document-node/core": "^3.1.1",
 		"classnames": "^2.3.1",
 		"graphql": "^16.5.0",
+		"graphql-tag": "^2.12.6",
 		"next": "12.2.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
@@ -26,6 +21,12 @@
 		"urql": "^2.2.2"
 	},
 	"devDependencies": {
+		"@graphql-codegen/cli": "2.9.1",
+		"@graphql-codegen/typescript": "2.7.2",
+		"@graphql-codegen/typescript-document-nodes": "2.3.2",
+		"@graphql-codegen/typescript-operations": "2.5.2",
+		"@graphql-codegen/typescript-urql": "^3.6.2",
+		"@graphql-codegen/urql-introspection": "2.2.0",
 		"@types/node": "18.0.0",
 		"@types/react": "18.0.14",
 		"@types/react-dom": "18.0.5",

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { GetCategoriesQuery } from '@/graphcms/generated/schema';
+import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { CategoriesList } from './categories-list';
 export interface HomeProps {
 	data: GetCategoriesQuery['categories'];
