@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GetCategoriesQuery } from '@/graphcms/generated/schema';
+import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { Category } from './category';
 
 export interface CategoriesListProps {

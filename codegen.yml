@@ -1,15 +1,11 @@
 overwrite: true
-schema: ${NEXT_PUBLIC_GRAPHCMS_URL}
-documents: './lib/graphcms/queries/*.graphql'
+schema: 'https://api-eu-central-1.graphcms.com/v2/cl5fnrg0e2pkw01t733r001kk/master'
+documents: 'lib/graphcms/queries/*.graphql'
 generates:
-  ./lib/graphcms/generated/schema.ts:
+  lib/graphcms/generated/graphql.ts:
     plugins:
-      - add:
-          content: '/* eslint-disable */'
       - 'typescript'
       - 'typescript-operations'
-      - 'typed-document-node'
-    config:
-      avoidOptionals: true
-      #immutableTypes: true
-      useTypeImports: true
+      - 'typescript-document-nodes'
+      - 'typescript-urql'
+      - 'urql-introspection'

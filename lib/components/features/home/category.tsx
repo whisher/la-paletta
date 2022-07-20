@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { GetCategoriesQuery } from '@/graphcms/generated/schema';
+import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
 
 export interface CategoryProps {

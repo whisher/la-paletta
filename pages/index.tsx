@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import type { NextPage } from 'next';
 
 import { loadFromCms } from '@/graphcms/client';
-import { GetCategoriesDocument, GetCategoriesQuery } from '@/graphcms/generated/schema';
+import { GetCategoriesDocument, GetCategoriesQuery } from '@/graphcms/generated/graphql';
 
 import { Home } from '@/components/features/home';
 
