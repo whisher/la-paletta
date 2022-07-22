@@ -8,11 +8,13 @@ import {
 	ProductsSlugCategoryQuery
 } from '@/graphcms/generated/graphql';
 
+import { Products } from '@/components/features/products';
+
 export const getStaticPaths: GetStaticPaths = async () => {
 	const result = await client.query(GetCategoriesSlugDocument).toPromise();
 	const paths = result.data.categories.map((category: { slug: string }) => {
 		return {
-			params: { cat: category.slug }
+			params: { category: category.slug }
 		};
 	});
 	return {
@@ -22,16 +24,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	const slug = context.params?.cat;
+	const slug = context.params?.category;
 	return await loadFromCms(ProductsSlugCategoryDocument, {
 		slug
 	});
 };
-type ShopPageProps = {
-	data: ProductsSlugCategoryQuery | undefined;
-};
-const Shopd: NextPage<ShopPageProps> = ({ data }) => {
-	return <h1 className="text-3xl font-bold underline">dddHello world Shop!i</h1>;
+
+type ProductsPageProps = {
+	data: ProductsSlugCategoryQuery | null;
 };
 
-export default Shopd;
+const ProductsPage: NextPage<ProductsPageProps> = ({ data }) => {
+	return data ? <Products data={data} /> : null;
+};
+
+export default ProductsPage;

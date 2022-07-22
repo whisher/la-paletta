@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-const Sidebar = () => {
+
+const Sidebar: React.FC = () => {
 	const [showSidebar, setShowSidebar] = useState(false);
 
 	return (

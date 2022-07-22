@@ -3,14 +3,18 @@ import Link from 'next/link';
 
 import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
+import { routes } from '../../../costants';
 
 export interface CategoryProps {
 	data: GetCategoriesQuery['categories'][0];
 }
+
 const Category: React.FC<CategoryProps> = ({ data }) => {
+	const { category } = routes;
 	const { description, name, slug } = data;
+	const href = `${category}${slug}`;
 	return (
-		<Link href={`/${slug}`}>
+		<Link href={href}>
 			<a>
 				<article className={`flex flex-col h-80 w-80 px-4 py-6 bg-white rounded-lg`}>
 					<h2 className="text-3xl uppercase font-bold">{name}</h2>

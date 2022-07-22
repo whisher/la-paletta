@@ -19,14 +19,14 @@ export async function loadFromCms<
 	variables?: Variables,
 	context?: Partial<OperationContext>
 ): Promise<{
-	props: { data: Data | undefined };
+	props: { data: Data | null };
 }> {
 	try {
 		const result = await client.query(query, variables, context).toPromise();
-		if (!result) {
+		if (result.error && !result.data) {
 			return {
 				props: {
-					data: undefined
+					data: null
 				}
 			};
 		}
@@ -38,7 +38,7 @@ export async function loadFromCms<
 	} catch (error) {
 		return {
 			props: {
-				data: undefined
+				data: null
 			}
 		};
 	}

@@ -6,6 +6,9 @@ module.exports = {
 	content: ['./pages/**/*.{js,ts,jsx,tsx}', './lib/components/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			boxShadow: {
+				sm: '0px 0px 1px rgba(102, 102, 102, 0.5)'
+			},
 			colors: {
 				black: '#1a1c20',
 				brand: {

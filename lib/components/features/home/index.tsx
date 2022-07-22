@@ -13,7 +13,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 	});
 	return (
 		<>
-			<div className="min-h-[calc(100vh-theme(space.20))] before:content-[''] before:absolute before:w-full before:h-full  before:bg-[url('/images/home2-bck.jpg')] before:bg-no-repeat before:bg-center before:bg-cover before:blur-[128px] before:opacity-80 flex justify-center items-center px-8">
+			<div className="min-h-[calc(100vh-theme(space.20))] before:content-[''] before:absolute before:w-full before:h-full  before:bg-[url('/images/home2-bck.jpg')] before:bg-no-repeat before:bg-center before:bg-cover before:blur-[128px] before:opacity-80 before:scale-75 flex justify-center items-center px-8">
 				<CategoriesList data={data} />
 			</div>
 			<div className="one"></div>

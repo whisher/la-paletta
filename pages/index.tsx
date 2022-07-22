@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type HomePageProps = {
-	data: GetCategoriesQuery | undefined;
+	data: GetCategoriesQuery | null;
 };
 
 const HomePage: NextPage<HomePageProps> = ({ data }) => {

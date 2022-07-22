@@ -31,6 +31,8 @@ export type Aggregate = {
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
+  altText?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -181,6 +183,8 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  altText?: InputMaybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   fileName: Scalars['String'];
   handle: Scalars['String'];
@@ -249,6 +253,44 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  altText?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  altText_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  altText_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  altText_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  altText_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  altText_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  altText_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  altText_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  altText_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  altText_starts_with?: InputMaybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  caption_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  caption_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  caption_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  caption_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  caption_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  caption_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  caption_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  caption_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -325,6 +367,10 @@ export type AssetManyWhereInput = {
 };
 
 export enum AssetOrderByInput {
+  AltTextAsc = 'altText_ASC',
+  AltTextDesc = 'altText_DESC',
+  CaptionAsc = 'caption_ASC',
+  CaptionDesc = 'caption_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   FileNameAsc = 'fileName_ASC',
@@ -356,6 +402,8 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  altText?: InputMaybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
   fileName?: InputMaybe<Scalars['String']>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
@@ -409,6 +457,8 @@ export type AssetUpdateManyInlineInput = {
 };
 
 export type AssetUpdateManyInput = {
+  altText?: InputMaybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
   fileName?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
   /** Optional updates to localizations */
@@ -495,6 +545,44 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  altText?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  altText_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  altText_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  altText_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  altText_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  altText_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  altText_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  altText_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  altText_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  altText_starts_with?: InputMaybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  caption_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  caption_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  caption_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  caption_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  caption_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  caption_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  caption_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  caption_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -2401,12 +2489,6 @@ export enum ProductOrderByInput {
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export enum ProductSize {
-  Large = 'LARGE',
-  Medium = 'MEDIUM',
-  Small = 'SMALL'
-}
-
 export type ProductUpdateInput = {
   categories?: InputMaybe<CategoryUpdateManyInlineInput>;
   description?: InputMaybe<Scalars['String']>;
@@ -2491,6 +2573,7 @@ export type ProductVariantColor = Node & {
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
   documentInStages: Array<ProductVariantColor>;
+  hex?: Maybe<Scalars['String']>;
   /** List of ProductVariantColor versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -2570,6 +2653,7 @@ export type ProductVariantColorCreateInput = {
   cl5sawsc612a601ukhugg4r1r?: InputMaybe<ProductCreateManyInlineInput>;
   color: ProductColor;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  hex?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -2630,6 +2714,25 @@ export type ProductVariantColorManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  hex?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  hex_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  hex_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  hex_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  hex_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  hex_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  hex_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  hex_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  hex_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  hex_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2710,6 +2813,8 @@ export enum ProductVariantColorOrderByInput {
   ColorDesc = 'color_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  HexAsc = 'hex_ASC',
+  HexDesc = 'hex_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   NameAsc = 'name_ASC',
@@ -2723,6 +2828,7 @@ export enum ProductVariantColorOrderByInput {
 export type ProductVariantColorUpdateInput = {
   cl5sawsc612a601ukhugg4r1r?: InputMaybe<ProductUpdateManyInlineInput>;
   color?: InputMaybe<ProductColor>;
+  hex?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
 };
 
@@ -2745,6 +2851,7 @@ export type ProductVariantColorUpdateManyInlineInput = {
 
 export type ProductVariantColorUpdateManyInput = {
   color?: InputMaybe<ProductColor>;
+  hex?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
 };
 
@@ -2824,6 +2931,25 @@ export type ProductVariantColorWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  hex?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  hex_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  hex_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  hex_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  hex_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  hex_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  hex_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  hex_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  hex_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  hex_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4906,11 +5032,13 @@ export type GetCategoriesSlugQuery = { __typename?: 'Query', categories: Array<{
 
 export type ProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
+  imageWidth?: InputMaybe<Scalars['Int']>;
+  imageThumbnail?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
 }>;
 
 
-export type ProductsSlugCategoryQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', name: string, products: Array<{ __typename?: 'Product', id: string, name: string, price: number, slug?: string | null }> }> };
+export type ProductsSlugCategoryQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', name: string, products: Array<{ __typename?: 'Product', description?: string | null, name: string, price: number, slug?: string | null, image?: { __typename?: 'Asset', url: string, altText?: string | null, thumbnail: string } | null, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex?: string | null, color: ProductColor }> }> }> };
 
 
 export const GetCategories = gql`
@@ -4930,13 +5058,27 @@ export const GetCategoriesSlug = gql`
 }
     `;
 export const ProductsSlugCategory = gql`
-    query ProductsSlugCategory($slug: String!, $stage: Stage = PUBLISHED) {
+    query ProductsSlugCategory($slug: String!, $imageWidth: Int = 600, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
   categories(where: {slug: $slug}, stage: $stage) {
     name
     products {
-      id
+      description
+      image {
+        thumbnail: url(
+          transformation: {image: {resize: {width: $imageThumbnail, fit: clip}}, document: {output: {format: webp}}}
+        )
+        url(
+          transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+        )
+        altText
+      }
       name
       price
+      productVariantColors {
+        name
+        hex
+        color
+      }
       slug
     }
   }
@@ -4968,13 +5110,27 @@ export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCa
   return Urql.useQuery<GetCategoriesSlugQuery>({ query: GetCategoriesSlugDocument, ...options });
 };
 export const ProductsSlugCategoryDocument = gql`
-    query ProductsSlugCategory($slug: String!, $stage: Stage = PUBLISHED) {
+    query ProductsSlugCategory($slug: String!, $imageWidth: Int = 600, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
   categories(where: {slug: $slug}, stage: $stage) {
     name
     products {
-      id
+      description
+      image {
+        thumbnail: url(
+          transformation: {image: {resize: {width: $imageThumbnail, fit: clip}}, document: {output: {format: webp}}}
+        )
+        url(
+          transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+        )
+        altText
+      }
       name
       price
+      productVariantColors {
+        name
+        hex
+        color
+      }
       slug
     }
   }
@@ -5017,6 +5173,22 @@ export default {
         "kind": "OBJECT",
         "name": "Asset",
         "fields": [
+          {
+            "name": "altText",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "caption",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
           {
             "name": "createdAt",
             "type": {
@@ -10100,6 +10272,14 @@ export default {
                 }
               }
             ]
+          },
+          {
+            "name": "hex",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
           },
           {
             "name": "history",

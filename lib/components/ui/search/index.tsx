@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-const Search = () => {
+const Search: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const toggleIsVisible = () => {
 		setIsVisible((isVisible) => !isVisible);
