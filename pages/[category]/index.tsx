@@ -35,7 +35,7 @@ type ProductsPageProps = {
 };
 
 const ProductsPage: NextPage<ProductsPageProps> = ({ data }) => {
-	return data ? <Products data={data} /> : null;
+	return data?.category ? <Products data={data.category} /> : null;
 };
 
 export default ProductsPage;

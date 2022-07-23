@@ -5,12 +5,11 @@ import { Breadcrumbs, Breadcrumb } from '@/components/ui/breadcrumbs';
 import { ProductsList } from './products-list';
 
 export interface HomeProps {
-	data: ProductsSlugCategoryQuery;
+	data: ProductsSlugCategoryQuery['category'];
 }
 
 const Products: React.FC<HomeProps> = ({ data }) => {
-	const category = data.category;
-	const { name } = category?.products![0];
+	const name = data?.products![0].name;
 	const routes: Breadcrumbs[] = [{ name }];
 	return (
 		<div className="min-h-[calc(100vh-theme(space.20))]">

@@ -8,7 +8,7 @@ import { routes } from '../../../costants';
 import { formatPrice } from '../../../util/format-price';
 
 export interface ProductsProps {
-	data: ProductsSlugCategoryQuery['categories'][0]['products'][0];
+	data: NonNullable<ProductsSlugCategoryQuery['category']>['products'][0];
 }
 
 const Products: React.FC<ProductsProps> = ({ data }) => {
@@ -30,7 +30,7 @@ const Products: React.FC<ProductsProps> = ({ data }) => {
 							/>
 						) : null}
 						<div className="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 origin-bottom transition">
-							<Button>Vedi tutti i prodotti</Button>
+							<Button>Scegli</Button>
 						</div>
 					</div>
 					<h2 className="w-full relative z-50 h-10 bg-white text-center text-lg font-bold truncate">
