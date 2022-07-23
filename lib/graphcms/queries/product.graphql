@@ -1,14 +1,20 @@
 query ProductsSlugCategory(
 	$slug: String!
-	$imageWidth: Int = 600
+	$imageWidth: Int = 200
 	$imageThumbnail: Int = 200
 	$stage: Stage = PUBLISHED
 ) {
-	categories(where: { slug: $slug }, stage: $stage) {
-		name
+	category(where: { slug: $slug }, stage: $stage) {
 		products {
+			categories {
+				name
+				slug
+			}
 			description
+			id
 			image {
+				width
+				height
 				thumbnail: url(
 					transformation: {
 						image: { resize: { width: $imageThumbnail, fit: clip } }
