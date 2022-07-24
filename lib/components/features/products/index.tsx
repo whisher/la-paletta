@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
 import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Breadcrumbs, Breadcrumb } from '@/components/ui/breadcrumbs';
@@ -15,21 +15,33 @@ const ascendingPrice = (a: ProductsDto[0], b: ProductsDto[0]) => {
 	return a.price - b.price;
 };
 
-export interface HomeProps {
+const productsReducer = (state: ProductsDto, action: number): ProductsDto => {
+	switch (action) {
+		case 0:
+			return state.sort(ascendingPrice).map((item) => item);
+		case 1:
+			return state.sort(descendingPrice).map((item) => item);
+		default:
+			return state;
+	}
+};
+
+const labels = ['Dal più economico', 'Dal più caro'];
+
+export interface ProductsProps {
 	data: NonNullable<ProductsSlugCategoryQuery['category']>;
 }
 
-const Products: React.FC<HomeProps> = ({ data }) => {
+const Products: React.FC<ProductsProps> = ({ data }) => {
 	const { products } = data;
-	const [items, setItems] = useState<ProductsDto>(products);
-	const { name } = products[0];
-	const routes: Breadcrumbs[] = [{ name }];
-	const labels = ['Dal più economico', 'Dal più caro'];
+	const [state, dispatch] = useReducer(productsReducer, products);
+	const { categories } = products[0];
+	const routes: Breadcrumbs[] = [{ name: categories[0].name }];
+
 	const handleButtonGroupClick = (num: number) => {
-		num > 0
-			? setItems((items) => items.sort(descendingPrice).map((item) => item))
-			: setItems((items) => items.sort(ascendingPrice).map((item) => item));
+		dispatch(num);
 	};
+
 	return (
 		<div className="min-h-[calc(100vh-theme(space.20))]">
 			<div className="flex justify-between items-center mt-3">
@@ -40,7 +52,7 @@ const Products: React.FC<HomeProps> = ({ data }) => {
 				</div>
 			</div>
 
-			<ProductsList data={items} />
+			<ProductsList data={state} />
 		</div>
 	);
 };
