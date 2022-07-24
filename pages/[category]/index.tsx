@@ -23,8 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const slug = context.params?.category;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const slug = params?.category;
 	return await loadFromCms(ProductsSlugCategoryDocument, {
 		slug
 	});

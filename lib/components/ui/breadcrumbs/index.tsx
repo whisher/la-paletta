@@ -13,7 +13,7 @@ export interface BreadcrumbsProps {
 }
 const Breadcrumb: React.FC<BreadcrumbsProps> = ({ routes }) => {
 	return (
-		<nav className="flex mt-3" aria-label="Breadcrumb">
+		<nav className="flex" aria-label="Breadcrumb">
 			<ol className="flex items-center h-8 pl-2 pr-3 overflow-hidden rounded-r-xl">
 				<li className="inline-flex items-center -mr-2">
 					<Link href="/">

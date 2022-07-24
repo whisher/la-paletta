@@ -5040,6 +5040,16 @@ export type ProductsSlugCategoryQueryVariables = Exact<{
 
 export type ProductsSlugCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', products: Array<{ __typename?: 'Product', description: string | null, id: string, name: string, price: number, slug: string | null, categories: Array<{ __typename?: 'Category', name: string, slug: string }>, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null, thumbnail: string }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex: string | null, color: ProductColor }> }> } | null };
 
+export type ProductsSlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+  imageWidth?: InputMaybe<Scalars['Int']>;
+  imageThumbnail?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type ProductsSlugQuery = { __typename?: 'Query', product: { __typename?: 'Product', description: string | null, id: string, name: string, price: number, slug: string | null, categories: Array<{ __typename?: 'Category', name: string, slug: string }>, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null, thumbnail: string }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex: string | null, color: ProductColor }> } | null };
+
 
 export const GetCategories = gql`
     query getCategories($stage: Stage = PUBLISHED) {
@@ -5060,7 +5070,7 @@ export const GetCategoriesSlug = gql`
 export const ProductsSlugCategory = gql`
     query ProductsSlugCategory($slug: String!, $imageWidth: Int = 200, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
   category(where: {slug: $slug}, stage: $stage) {
-    products {
+    products(orderBy: price_ASC) {
       categories {
         name
         slug
@@ -5087,6 +5097,37 @@ export const ProductsSlugCategory = gql`
       }
       slug
     }
+  }
+}
+    `;
+export const ProductsSlug = gql`
+    query ProductsSlug($slug: String!, $imageWidth: Int = 200, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
+  product(where: {slug: $slug}, stage: $stage) {
+    categories {
+      name
+      slug
+    }
+    description
+    id
+    image {
+      width
+      height
+      thumbnail: url(
+        transformation: {image: {resize: {width: $imageThumbnail, fit: clip}}, document: {output: {format: webp}}}
+      )
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+      altText
+    }
+    name
+    price
+    productVariantColors {
+      name
+      hex
+      color
+    }
+    slug
   }
 }
     `;
@@ -5118,7 +5159,7 @@ export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCa
 export const ProductsSlugCategoryDocument = gql`
     query ProductsSlugCategory($slug: String!, $imageWidth: Int = 200, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
   category(where: {slug: $slug}, stage: $stage) {
-    products {
+    products(orderBy: price_ASC) {
       categories {
         name
         slug
@@ -5151,6 +5192,41 @@ export const ProductsSlugCategoryDocument = gql`
 
 export function useProductsSlugCategoryQuery(options: Omit<Urql.UseQueryArgs<ProductsSlugCategoryQueryVariables>, 'query'>) {
   return Urql.useQuery<ProductsSlugCategoryQuery>({ query: ProductsSlugCategoryDocument, ...options });
+};
+export const ProductsSlugDocument = gql`
+    query ProductsSlug($slug: String!, $imageWidth: Int = 200, $imageThumbnail: Int = 200, $stage: Stage = PUBLISHED) {
+  product(where: {slug: $slug}, stage: $stage) {
+    categories {
+      name
+      slug
+    }
+    description
+    id
+    image {
+      width
+      height
+      thumbnail: url(
+        transformation: {image: {resize: {width: $imageThumbnail, fit: clip}}, document: {output: {format: webp}}}
+      )
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+      altText
+    }
+    name
+    price
+    productVariantColors {
+      name
+      hex
+      color
+    }
+    slug
+  }
+}
+    `;
+
+export function useProductsSlugQuery(options: Omit<Urql.UseQueryArgs<ProductsSlugQueryVariables>, 'query'>) {
+  return Urql.useQuery<ProductsSlugQuery>({ query: ProductsSlugDocument, ...options });
 };
 import { IntrospectionQuery } from 'graphql';
 export default {

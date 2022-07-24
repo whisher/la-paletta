@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
+import { ProductVariantColors } from '@/components/ui/product-variant-colors';
 import { routes } from '../../../costants';
 import { formatPrice } from '../../../util/format-price';
 
@@ -14,7 +15,7 @@ export interface ProductsProps {
 const Products: React.FC<ProductsProps> = ({ data }) => {
 	const { product: prod } = routes;
 	const { slug: slugCategory } = data.categories[0];
-	const { image, name, price, slug } = data;
+	const { image, name, price, slug, productVariantColors } = data;
 	const href = `${prod}${slugCategory}/${slug}`;
 	return (
 		<Link href={href}>
@@ -37,6 +38,7 @@ const Products: React.FC<ProductsProps> = ({ data }) => {
 						{name}
 					</h2>
 					<h3 className="text-center text-3xl text-gray-400">{formatPrice(price)}</h3>
+					<ProductVariantColors data={productVariantColors} />
 				</article>
 			</a>
 		</Link>
