@@ -9,3 +9,5 @@ generates:
       - 'typescript-document-nodes'
       - 'typescript-urql'
       - 'urql-introspection'
+config:
+  avoidOptionals: true

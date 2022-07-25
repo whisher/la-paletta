@@ -18,11 +18,12 @@ const Header: React.FC = () => {
 	}, []);
 	const classes = classNames(
 		`sticky top-0 z-50 h-20 origin-top flex justify-between items-center px-8 transition duration-500`,
-		{ 'bg-brand-300/70 scale-y-90': isScrolled, 'bg-brand-300 scale-y-100': !isScrolled }
+		{ 'bg-brand-300': isScrolled, 'bg-brand-300/80': !isScrolled }
 	);
 	return (
 		<header className={classes}>
 			<Brand />
+
 			<Nav />
 			<ul className="flex justify-between items-center gap-x-4">
 				<li>

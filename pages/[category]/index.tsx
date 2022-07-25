@@ -4,8 +4,8 @@ import type { NextPage } from 'next';
 import { client, loadFromCms } from '@/graphcms/client';
 import {
 	GetCategoriesSlugDocument,
-	ProductsSlugCategoryDocument,
-	ProductsSlugCategoryQuery
+	GetProductsSlugCategoryDocument,
+	GetProductsSlugCategoryQuery
 } from '@/graphcms/generated/graphql';
 
 import { Products } from '@/components/features/products';
@@ -23,19 +23,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const slug = context.params?.category;
-	return await loadFromCms(ProductsSlugCategoryDocument, {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const slug = params?.category;
+	return await loadFromCms(GetProductsSlugCategoryDocument, {
 		slug
 	});
 };
 
 type ProductsPageProps = {
-	data: ProductsSlugCategoryQuery | null;
+	data: GetProductsSlugCategoryQuery | null;
 };
 
 const ProductsPage: NextPage<ProductsPageProps> = ({ data }) => {
-	return data ? <Products data={data} /> : null;
+	return data?.category ? <Products data={data.category} /> : null;
 };
 
 export default ProductsPage;

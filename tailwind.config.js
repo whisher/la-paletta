@@ -9,6 +9,10 @@ module.exports = {
 			boxShadow: {
 				sm: '0px 0px 1px rgba(102, 102, 102, 0.5)'
 			},
+			borderRadius: {
+				xl: '9px',
+				lg: '8px'
+			},
 			colors: {
 				black: '#1a1c20',
 				brand: {
