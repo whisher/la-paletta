@@ -1,9 +1,4 @@
-query ProductsSlugCategory(
-	$slug: String!
-	$imageWidth: Int = 200
-	$imageThumbnail: Int = 200
-	$stage: Stage = PUBLISHED
-) {
+query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
 	category(where: { slug: $slug }, stage: $stage) {
 		products(orderBy: price_ASC) {
 			categories {
@@ -15,12 +10,6 @@ query ProductsSlugCategory(
 			image {
 				width
 				height
-				thumbnail: url(
-					transformation: {
-						image: { resize: { width: $imageThumbnail, fit: clip } }
-						document: { output: { format: webp } }
-					}
-				)
 				url(
 					transformation: {
 						image: { resize: { width: $imageWidth, fit: clip } }
@@ -40,11 +29,19 @@ query ProductsSlugCategory(
 		}
 	}
 }
+query getProductsSlug($stage: Stage = PUBLISHED) {
+	products(stage: $stage) {
+		categories {
+			slug
+		}
+		slug
+	}
+}
 
-query ProductsSlug(
+query getProductSlug(
 	$slug: String!
-	$imageWidth: Int = 200
-	$imageThumbnail: Int = 200
+	$imageWidth: Int = 350
+	$imageThumbnail: Int = 150
 	$stage: Stage = PUBLISHED
 ) {
 	product(where: { slug: $slug }, stage: $stage) {

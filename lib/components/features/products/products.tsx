@@ -2,14 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
+import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
 import { ProductVariantColors } from '@/components/ui/product-variant-colors';
 import { routes } from '../../../costants';
 import { formatPrice } from '../../../util/format-price';
 
 export interface ProductsProps {
-	data: NonNullable<ProductsSlugCategoryQuery['category']>['products'][0];
+	data: NonNullable<GetProductsSlugCategoryQuery['category']>['products'][0];
 }
 
 const Products: React.FC<ProductsProps> = ({ data }) => {

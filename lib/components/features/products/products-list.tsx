@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
+import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Products } from './products';
 
 export interface ProductsListProps {
-	data: NonNullable<ProductsSlugCategoryQuery['category']>['products'];
+	data: NonNullable<GetProductsSlugCategoryQuery['category']>['products'];
 }
 const ProductsList: React.FC<ProductsListProps> = ({ data }) => {
 	return (

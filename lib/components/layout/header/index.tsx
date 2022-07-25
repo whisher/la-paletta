@@ -23,6 +23,7 @@ const Header: React.FC = () => {
 	return (
 		<header className={classes}>
 			<Brand />
+
 			<Nav />
 			<ul className="flex justify-between items-center gap-x-4">
 				<li>

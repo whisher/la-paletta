@@ -20,7 +20,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ current, labels, handleClick 
 						<button
 							onClick={() => handler(i)}
 							type="button"
-							className={classNames('py-2 px-4 text-gray-400 bg-whiteborder-gray-300', {
+							className={classNames('py-2 px-4 text-gray-400 bg-white border-gray-300', {
 								'border-l border-y rounded-l-lg': i === 0,
 								'border-r': length < 3,
 								'border-r border-y rounded-r-lg': i + 1 === length,

@@ -1,11 +1,11 @@
 import React, { useReducer } from 'react';
 
-import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
+import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Breadcrumbs, Breadcrumb } from '@/components/ui/breadcrumbs';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { ProductsList } from './products-list';
 
-type ProductsDto = NonNullable<ProductsSlugCategoryQuery['category']>['products'];
+type ProductsDto = NonNullable<GetProductsSlugCategoryQuery['category']>['products'];
 
 const descendingPrice = (a: ProductsDto[0], b: ProductsDto[0]) => {
 	return b.price - a.price;
@@ -29,7 +29,7 @@ const productsReducer = (state: ProductsDto, action: number): ProductsDto => {
 const labels = ['Dal più economico', 'Dal più caro'];
 
 export interface ProductsProps {
-	data: NonNullable<ProductsSlugCategoryQuery['category']>;
+	data: NonNullable<GetProductsSlugCategoryQuery['category']>;
 }
 
 const Products: React.FC<ProductsProps> = ({ data }) => {
