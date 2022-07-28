@@ -1,5 +1,6 @@
 query getCategories($stage: Stage = PUBLISHED) {
 	categories(stage: $stage) {
+		id
 		description
 		name
 		slug

@@ -5021,7 +5021,7 @@ export type GetCategoriesQueryVariables = Exact<{
 }>;
 
 
-export type GetCategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', description: string | null, name: string, slug: string }> };
+export type GetCategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, description: string | null, name: string, slug: string }> };
 
 export type GetCategoriesSlugQueryVariables = Exact<{
   stage?: InputMaybe<Stage>;
@@ -5037,7 +5037,7 @@ export type GetProductsSlugCategoryQueryVariables = Exact<{
 }>;
 
 
-export type GetProductsSlugCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', products: Array<{ __typename?: 'Product', description: string | null, id: string, name: string, price: number, slug: string | null, categories: Array<{ __typename?: 'Category', name: string, slug: string }>, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex: string | null, color: ProductColor }> }> } | null };
+export type GetProductsSlugCategoryQuery = { __typename?: 'Query', category: { __typename?: 'Category', name: string, slug: string, products: Array<{ __typename?: 'Product', description: string | null, id: string, name: string, price: number, slug: string | null, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex: string | null, color: ProductColor }> }> } | null };
 
 export type GetProductsSlugQueryVariables = Exact<{
   stage?: InputMaybe<Stage>;
@@ -5045,6 +5045,13 @@ export type GetProductsSlugQueryVariables = Exact<{
 
 
 export type GetProductsSlugQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', slug: string | null, categories: Array<{ __typename?: 'Category', slug: string }> }> };
+
+export type GetCategoriesProductsSlugQueryVariables = Exact<{
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type GetCategoriesProductsSlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string, products: Array<{ __typename?: 'Product', slug: string | null }> }> };
 
 export type GetProductSlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -5060,6 +5067,7 @@ export type GetProductSlugQuery = { __typename?: 'Query', product: { __typename?
 export const GetCategories = gql`
     query getCategories($stage: Stage = PUBLISHED) {
   categories(stage: $stage) {
+    id
     description
     name
     slug
@@ -5076,11 +5084,9 @@ export const GetCategoriesSlug = gql`
 export const GetProductsSlugCategory = gql`
     query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
   category(where: {slug: $slug}, stage: $stage) {
+    name
+    slug
     products(orderBy: price_ASC) {
-      categories {
-        name
-        slug
-      }
       description
       id
       image {
@@ -5110,6 +5116,16 @@ export const GetProductsSlug = gql`
       slug
     }
     slug
+  }
+}
+    `;
+export const GetCategoriesProductsSlug = gql`
+    query getCategoriesProductsSlug($stage: Stage = PUBLISHED) {
+  categories(stage: $stage) {
+    slug
+    products {
+      slug
+    }
   }
 }
     `;
@@ -5148,6 +5164,7 @@ export const GetProductSlug = gql`
 export const GetCategoriesDocument = gql`
     query getCategories($stage: Stage = PUBLISHED) {
   categories(stage: $stage) {
+    id
     description
     name
     slug
@@ -5172,11 +5189,9 @@ export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCa
 export const GetProductsSlugCategoryDocument = gql`
     query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
   category(where: {slug: $slug}, stage: $stage) {
+    name
+    slug
     products(orderBy: price_ASC) {
-      categories {
-        name
-        slug
-      }
       description
       id
       image {
@@ -5216,6 +5231,20 @@ export const GetProductsSlugDocument = gql`
 
 export function useGetProductsSlugQuery(options?: Omit<Urql.UseQueryArgs<GetProductsSlugQueryVariables>, 'query'>) {
   return Urql.useQuery<GetProductsSlugQuery>({ query: GetProductsSlugDocument, ...options });
+};
+export const GetCategoriesProductsSlugDocument = gql`
+    query getCategoriesProductsSlug($stage: Stage = PUBLISHED) {
+  categories(stage: $stage) {
+    slug
+    products {
+      slug
+    }
+  }
+}
+    `;
+
+export function useGetCategoriesProductsSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCategoriesProductsSlugQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetCategoriesProductsSlugQuery>({ query: GetCategoriesProductsSlugDocument, ...options });
 };
 export const GetProductSlugDocument = gql`
     query getProductSlug($slug: String!, $imageWidth: Int = 350, $imageThumbnail: Int = 150, $stage: Stage = PUBLISHED) {

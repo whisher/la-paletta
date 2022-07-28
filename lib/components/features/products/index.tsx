@@ -3,7 +3,8 @@ import React, { useReducer } from 'react';
 import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Breadcrumbs, Breadcrumb } from '@/components/ui/breadcrumbs';
 import { ButtonGroup } from '@/components/ui/button-group';
-import { ProductsList } from './products-list';
+import { NoData } from '@/components/ui/no-data';
+import { ProductsGrid } from './products-grid';
 
 type ProductsDto = NonNullable<GetProductsSlugCategoryQuery['category']>['products'];
 
@@ -33,11 +34,10 @@ export interface ProductsProps {
 }
 
 const Products: React.FC<ProductsProps> = ({ data }) => {
-	const { products } = data;
+	const { name: categoryName, products } = data;
 	const [state, dispatch] = useReducer(productsReducer, products);
-	const { categories } = products[0];
-	const routes: Breadcrumbs[] = [{ name: categories[0].name }];
-
+	const routes: Breadcrumbs[] = [{ name: categoryName }];
+	const hasProducts = products.length > 0;
 	const handleButtonGroupClick = (num: number) => {
 		dispatch(num);
 	};
@@ -52,7 +52,7 @@ const Products: React.FC<ProductsProps> = ({ data }) => {
 				</div>
 			</div>
 
-			<ProductsList data={state} />
+			{hasProducts ? <ProductsGrid data={state} /> : <NoData feature="Products" />}
 		</div>
 	);
 };

@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { ProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
+import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 
 export interface ProductVariantColorsProps {
-	data: NonNullable<ProductsSlugCategoryQuery['category']>['products'][0]['productVariantColors'];
+	data: NonNullable<
+		GetProductsSlugCategoryQuery['category']
+	>['products'][0]['productVariantColors'];
 }
 
 const ProductVariantColors: React.FC<ProductVariantColorsProps> = ({ data }) => {

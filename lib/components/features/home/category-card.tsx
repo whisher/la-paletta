@@ -5,14 +5,14 @@ import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
 import { routes } from '../../../costants';
 
-export interface CategoryProps {
+export interface CategoryCardProps {
 	data: GetCategoriesQuery['categories'][0];
 }
 
-const Category: React.FC<CategoryProps> = ({ data }) => {
-	const { category } = routes;
+const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
+	const { products } = routes;
 	const { description, name, slug } = data;
-	const href = `${category}${slug}`;
+	const href = `${products}${slug}`;
 	return (
 		<Link href={href}>
 			<a>
@@ -28,4 +28,4 @@ const Category: React.FC<CategoryProps> = ({ data }) => {
 	);
 };
 
-export { Category };
+export { CategoryCard };

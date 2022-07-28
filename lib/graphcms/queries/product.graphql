@@ -1,10 +1,8 @@
 query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
 	category(where: { slug: $slug }, stage: $stage) {
+		name
+		slug
 		products(orderBy: price_ASC) {
-			categories {
-				name
-				slug
-			}
 			description
 			id
 			image {
@@ -37,7 +35,14 @@ query getProductsSlug($stage: Stage = PUBLISHED) {
 		slug
 	}
 }
-
+query getCategoriesProductsSlug($stage: Stage = PUBLISHED) {
+	categories(stage: $stage) {
+		slug
+		products {
+			slug
+		}
+	}
+}
 query getProductSlug(
 	$slug: String!
 	$imageWidth: Int = 350
