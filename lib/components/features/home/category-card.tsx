@@ -12,7 +12,7 @@ export interface CategoryCardProps {
 const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
 	const { products } = routes;
 	const { description, name, slug } = data;
-	const href = `${products}${slug}`;
+	const href = `${products}/${slug}`;
 	return (
 		<Link href={href}>
 			<a>

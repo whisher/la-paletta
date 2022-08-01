@@ -21,19 +21,29 @@ export interface ImageDto {
 	height: number | null;
 	url: string;
 	altText: string | null;
+	thumbnail?: string;
 }
 
 export interface ImageProps {
 	image: ImageDto;
 	width: number;
+	isThumbNail?: boolean;
 }
-const Image: React.FC<ImageProps> = ({ image, width }) => {
+const Image: React.FC<ImageProps> = ({ image, width, isThumbNail = false }) => {
 	const { width: imageWidth, height: imageHeight } = image;
 	const { width: w, height: h } = getSizesFromTransformation(
 		{ width: Number(imageWidth), height: Number(imageHeight) },
 		width
 	);
-	return <Img src={image.url} alt={String(image.altText)} width={w} height={h} quality="100" />;
+	return (
+		<Img
+			src={isThumbNail ? image.thumbnail! : image.url}
+			alt={String(image.altText)}
+			width={w}
+			height={h}
+			quality="100"
+		/>
+	);
 };
 
 export { Image };

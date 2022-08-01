@@ -20,7 +20,8 @@ module.exports = {
 					200: '#ffd5cd',
 					300: '#9AE66E', // green
 					400: '#ff884f', // orange
-					500: '#00c2ff' // blue
+					500: '#00c2ff', // blue
+					600: 'var(--la-paletta-default)'
 				},
 				gray: {
 					300: '#cbd5e1',

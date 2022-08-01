@@ -2,23 +2,21 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { routes, PRODUCT_GRID_WIDTH } from '../../../costants';
+import { formatPrice } from '../../../util/format-price';
 import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 import { ProductVariantColors } from '@/components/ui/product-variant-colors';
-import { routes, PRODUCT_GRID_WIDTH } from '../../../costants';
-import { formatPrice } from '../../../util/format-price';
-import { getSizesFromTransformation } from '../../../util/get-sizes-from-transformation';
 
 export interface ProductsCardProps {
 	data: NonNullable<GetProductsSlugCategoryQuery['category']>['products'][0];
 }
 
 const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
-	const { product: prod } = routes;
-	const { slug: slugCategory } = data;
+	const { product } = routes;
 	const { image, name, price, slug, productVariantColors } = data;
-	const href = `${prod}${slugCategory}/${slug}`;
+	const href = `${product}/${slug}`;
 
 	return (
 		<Link href={href}>
@@ -35,7 +33,7 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
 					<h2 className="w-full relative z-50 h-12 bg-white text-center text-lg font-bold truncate">
 						{name}
 					</h2>
-					<h3 className="text-center text-3xl text-gray-400">{formatPrice(price)}</h3>
+					<h3 className="text-center text-3xl  text-gray-400">{formatPrice(price)}</h3>
 					<ProductVariantColors data={productVariantColors} />
 				</article>
 			</a>

@@ -1,0 +1,96 @@
+import create from 'zustand';
+import { CartState, ItemDto, ProductDto } from './type';
+
+const useCartStore = create<CartState>((set, get) => ({
+	items: [],
+	open: false,
+	toggle: () => {
+		const { open } = get();
+		set((state) => ({
+			...state,
+			open: !open
+		}));
+	},
+	addItem: (item: ItemDto, quantity: number) => {
+		const { items } = get();
+		const current = items.find((prod) => {
+			const { id, color } = prod;
+			return id === item.id && color.id === item.color.id;
+		});
+		if (!current) {
+			item.quantity = quantity;
+			set((state) => ({
+				...state,
+				items: [...items, item]
+			}));
+		} else {
+			set((state) => ({
+				...state,
+				items: items.map((item) => {
+					const { id, color } = current;
+					if (id === item.id && color.id === item.color.id) {
+						item.quantity! += quantity;
+						return item;
+					}
+					return item;
+				})
+			}));
+		}
+	},
+	updateQuantityItem: (
+		pid: ItemDto['id'],
+		cid: ProductDto['productVariantColors'][0]['id'],
+		quantity: number
+	) => {
+		const { items } = get();
+		const current = items.find((prod) => {
+			const { id, color } = prod;
+			return id === pid && color.id === cid;
+		});
+		if (current) {
+			set((state) => ({
+				...state,
+				items: items.map((item) => {
+					const { id, color } = current;
+					if (id === item.id && color.id === item.color.id) {
+						item.quantity! -= quantity;
+						return item;
+					}
+					return item;
+				})
+			}));
+		}
+	},
+	getQuantityItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => {
+		const { items } = get();
+		const current = items.find((prod) => {
+			const { id, color } = prod;
+			return id === pid && color.id === cid;
+		});
+		if (current) {
+			return current.quantity!;
+		}
+		return 0;
+	},
+	getTotalItems: () => {
+		const { items } = get();
+		return items.reduce((acc, curr) => acc + curr.quantity!, 0);
+	},
+	getTotal: () => {
+		const { items } = get();
+		return items.reduce((acc, curr) => acc + curr.quantity! * curr.price, 0);
+	},
+	getTotalItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => {
+		const { items } = get();
+		const current = items.find((prod) => {
+			const { id, color } = prod;
+			return id === pid && color.id === cid;
+		});
+		if (current) {
+			return current.quantity! * current.price;
+		}
+		return 0;
+	}
+}));
+
+export { useCartStore };

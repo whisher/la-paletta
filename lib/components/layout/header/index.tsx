@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { Brand } from '../brand';
 import { Nav } from '../nav';
 
 import { Search } from '@/components/ui/search';
-import { Sidebar } from '@/components/ui/cart';
+import { Cart } from '@/components/ui/cart';
 
 const Header: React.FC = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
 				</li>
 
 				<li>
-					<Sidebar />
+					<Cart />
 				</li>
 			</ul>
 		</header>
