@@ -25,9 +25,9 @@ export type CartState = {
 	getTotalItems: () => number;
 	getTotal: () => number;
 	getTotalItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => number;
-	/*removeItem: (idt: ItemDto['id']) => void;
-	
-	emptyCart: () => void;
+	removeItem: (item: ItemDto) => void;
+
+	/*emptyCart: () => void;
 	getItem: (
 		id: ItemDto['id'],
 		color: ProductDto['productVariantColors'][0]['id']

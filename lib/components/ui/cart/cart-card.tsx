@@ -31,7 +31,7 @@ const CartCard: React.FC<CartCardProps> = ({ data, handlerDeleteItem }) => {
 				<div className="relative">
 					<Image image={image} width={PRODUCT_THUMBNAIL} isThumbNail={true} />
 					<span
-						className="absolute top-0 left-0 h-4 w-4"
+						className="absolute top-0 left-0 h-4 w-4 shadow-sm rounded-sm"
 						style={{ backgroundColor: String(`#${color.hex}`) }}
 					></span>
 				</div>

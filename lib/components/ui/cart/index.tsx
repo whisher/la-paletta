@@ -6,14 +6,14 @@ import { CartIcon } from './cart-icon';
 import { CartGridCard } from './cart-grid';
 import { CartNoData } from './cart-no-data';
 const Cart: React.FC = () => {
-	const { getTotal, getTotalItems, items, open, toggle } = useCartStore();
+	const { getTotal, getTotalItems, items, open, removeItem, toggle } = useCartStore();
 
 	const total = getTotal();
 	const totalItems = getTotalItems();
 	const hasItems = items.length > 0;
 
 	const handlerDeleteItem = (data: ItemDto) => {
-		console.log('delete', data);
+		removeItem(data);
 	};
 	return (
 		<>
@@ -29,7 +29,7 @@ const Cart: React.FC = () => {
 					/>
 				</button>
 			) : (
-				<CartIcon total={total} totalItems={totalItems} handlerShowBar={toggle} />
+				<CartIcon total={total} totalItems={totalItems} toggle={toggle} />
 			)}
 
 			<div
@@ -37,16 +37,18 @@ const Cart: React.FC = () => {
 					open ? 'translate-x-0 ' : 'translate-x-full'
 				}`}
 			>
-				<aside className="relative w-96 min-h-full overflow-y-auto flex flex-col bg-white">
-					<h2 className="flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300">
-						I miei acquisti
-					</h2>
-					<div className="px-6 mt-9">
-						{hasItems ? (
-							<CartGridCard data={items} handlerDeleteItem={handlerDeleteItem} />
-						) : (
-							<CartNoData toggle={toggle} />
-						)}
+				<aside className="relative w-96 overflow-y-auto flex flex-col bg-white">
+					<div className="min-h-full">
+						<h2 className="sticky top-0 z-50 flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
+							I miei acquisti
+						</h2>
+						<div className="px-6 mt-9">
+							{hasItems ? (
+								<CartGridCard data={items} handlerDeleteItem={handlerDeleteItem} />
+							) : (
+								<CartNoData toggle={toggle} />
+							)}
+						</div>
 					</div>
 				</aside>
 			</div>

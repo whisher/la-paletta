@@ -6,15 +6,15 @@ import { formatPrice } from '../../../util/format-price';
 export interface CartIconProps {
 	total: number;
 	totalItems: number;
-	handlerShowBar: () => void;
+	toggle: () => void;
 }
 
-const CartIcon: React.FC<CartIconProps> = ({ total, totalItems, handlerShowBar }) => {
+const CartIcon: React.FC<CartIconProps> = ({ total, totalItems, toggle }) => {
 	return (
 		<div className="flex items-center">
 			<button
 				className="relative flex justify-center items-center p-1 rounded-full bg-white border-2 border-white"
-				onClick={handlerShowBar}
+				onClick={toggle}
 			>
 				<AiOutlineShoppingCart className="text-brand-300 w-8 h-8" />
 				<span

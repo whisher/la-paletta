@@ -13,7 +13,7 @@ const useCartStore = create<CartState>((set, get) => ({
 	},
 	addItem: (item: ItemDto, quantity: number) => {
 		const { items } = get();
-		const current = items.find((prod) => {
+		const current: ItemDto | undefined = items.find((prod: ItemDto) => {
 			const { id, color } = prod;
 			return id === item.id && color.id === item.color.id;
 		});
@@ -26,7 +26,7 @@ const useCartStore = create<CartState>((set, get) => ({
 		} else {
 			set((state) => ({
 				...state,
-				items: items.map((item) => {
+				items: items.map((item: ItemDto) => {
 					const { id, color } = current;
 					if (id === item.id && color.id === item.color.id) {
 						item.quantity! += quantity;
@@ -43,7 +43,7 @@ const useCartStore = create<CartState>((set, get) => ({
 		quantity: number
 	) => {
 		const { items } = get();
-		const current = items.find((prod) => {
+		const current: ItemDto | undefined = items.find((prod: ItemDto) => {
 			const { id, color } = prod;
 			return id === pid && color.id === cid;
 		});
@@ -63,7 +63,7 @@ const useCartStore = create<CartState>((set, get) => ({
 	},
 	getQuantityItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => {
 		const { items } = get();
-		const current = items.find((prod) => {
+		const current: ItemDto | undefined = items.find((prod: ItemDto) => {
 			const { id, color } = prod;
 			return id === pid && color.id === cid;
 		});
@@ -82,7 +82,7 @@ const useCartStore = create<CartState>((set, get) => ({
 	},
 	getTotalItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => {
 		const { items } = get();
-		const current = items.find((prod) => {
+		const current = items.find((prod: ItemDto) => {
 			const { id, color } = prod;
 			return id === pid && color.id === cid;
 		});
@@ -90,6 +90,20 @@ const useCartStore = create<CartState>((set, get) => ({
 			return current.quantity! * current.price;
 		}
 		return 0;
+	},
+	removeItem: (item: ItemDto) => {
+		const { items } = get();
+
+		set((state) => ({
+			...state,
+			items: items.filter((prod) => {
+				const { id, color } = prod;
+				if (item.id === id) {
+					return item.color.id !== color.id;
+				}
+				return prod;
+			})
+		}));
 	}
 }));
 
