@@ -17,7 +17,7 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
 	const { product } = routes;
 	const { image, name, price, slug, productVariantColors } = data;
 	const href = `${product}/${slug}`;
-
+	console.log('card', data);
 	return (
 		<Link href={href}>
 			<a>
@@ -40,5 +40,5 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
 		</Link>
 	);
 };
-
-export { ProductsCard };
+const MemoizedProductsCard = React.memo(ProductsCard);
+export { MemoizedProductsCard };
