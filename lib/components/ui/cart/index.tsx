@@ -1,38 +1,59 @@
-import React, { useState } from 'react';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import React from 'react';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
-const Sidebar: React.FC = () => {
-	const [showSidebar, setShowSidebar] = useState(false);
+import { ItemDto, useCartStore } from '@/hooks/cart';
+import { CartIcon } from './cart-icon';
+import { CartGridCard } from './cart-grid';
+import { CartNoData } from './cart-no-data';
+const Cart: React.FC = () => {
+	const { getTotal, getTotalItems, items, open, removeItem, toggle } = useCartStore();
 
+	const total = getTotal();
+	const totalItems = getTotalItems();
+	const hasItems = items.length > 0;
+
+	const handlerDeleteItem = (data: ItemDto) => {
+		removeItem(data);
+	};
 	return (
 		<>
-			{showSidebar ? (
+			{open ? (
 				<button
-					className="flex text-4xl text-red-600 items-center cursor-pointer fixed right-10 top-6 z-50"
-					onClick={() => setShowSidebar(!showSidebar)}
+					className={`fixed right-1.5 top-4 z-50 cursor-pointer bg-trasparent`}
+					onClick={toggle}
 				>
-					x
+					<AiFillCloseCircle
+						className={` w-7 h-7 ease-in-out transition ${
+							open ? 'text-gray-400 scale-100' : 'text-white scale-0'
+						}`}
+					/>
 				</button>
 			) : (
-				<button
-					className="flex justify-center items-center p-1 rounded-full bg-white border-2 border-white"
-					onClick={() => setShowSidebar(!showSidebar)}
-				>
-					<AiOutlineShoppingCart className="text-brand-300 w-8 h-8" />
-				</button>
+				<CartIcon total={total} totalItems={totalItems} toggle={toggle} />
 			)}
 
 			<div
-				className={`top-0 right-0 w-[100vw] before:content-[''] before:absolute before:w-full before:h-full before:opacity-70 before:bg-blue-600 fixed h-full z-40 ease-in-out duration-300 flex justify-end ${
-					showSidebar ? 'translate-x-0 ' : 'translate-x-full'
+				className={`top-0 right-0 w-screen before:content-[''] before:absolute before:w-full before:h-full before:bg-black/20 fixed h-full z-40 flex justify-end ease-in-out transition duration-200 ${
+					open ? 'translate-x-0 ' : 'translate-x-full'
 				}`}
 			>
-				<div className="w-[300px] h-full bg-white relative">
-					<h3 className="mt-20 text-4xl font-semibold text-red-800">I am a sidebarrr</h3>
-				</div>
+				<aside className="relative w-96 overflow-y-auto flex flex-col bg-white">
+					<div className="min-h-full">
+						<h2 className="sticky top-0 z-50 flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
+							I miei acquisti
+						</h2>
+						<div className="px-6 mt-9">
+							{hasItems ? (
+								<CartGridCard data={items} handlerDeleteItem={handlerDeleteItem} />
+							) : (
+								<CartNoData toggle={toggle} />
+							)}
+						</div>
+					</div>
+				</aside>
 			</div>
 		</>
 	);
 };
 
-export { Sidebar };
+export { Cart };

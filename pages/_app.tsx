@@ -5,9 +5,11 @@ import { Main } from '@/components/layout';
 
 const LaPaletta = ({ Component, pageProps }: AppProps) => {
 	return (
-		<Main>
-			<Component {...pageProps} />
-		</Main>
+		
+			<Main>
+				<Component {...pageProps} />
+			</Main>
+		
 	);
 };
 

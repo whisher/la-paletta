@@ -24,11 +24,11 @@ const Search: React.FC = () => {
 			<button
 				type="button"
 				onClick={toggleIsVisible}
-				className={`absolute right-0 p-1 bg-brand-300 rounded-full ${
+				className={`absolute right-0 p-1 bg-white rounded-full ${
 					isVisible ? 'border-0' : 'border-2 border-white'
 				}`}
 			>
-				<AiOutlineSearch aria-label="submit ricerca" className="text-white h-8 w-8" />
+				<AiOutlineSearch aria-label="submit ricerca" className="text-brand-300 h-8 w-8" />
 			</button>
 		</form>
 	);

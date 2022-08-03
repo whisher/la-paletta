@@ -8,18 +8,17 @@ import {
 	GetProductSlugQuery
 } from '@/graphcms/generated/graphql';
 
+import { PRODUCT_WIDTH, PRODUCT_THUMBNAIL } from '../../lib/costants';
+
 import { Product } from '@/components/features/product';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const result = await client.query(GetProductsSlugDocument).toPromise();
-
-	const paths = result.data.products.map(
-		(product: { categories: { slug: string }[]; slug: string }) => {
-			return {
-				params: { category: product.categories[0].slug, product: product.slug }
-			};
-		}
-	);
+	const paths = result.data.products.map((product: { slug: string }) => {
+		return {
+			params: { product: product.slug }
+		};
+	});
 	return {
 		paths,
 		fallback: false
@@ -29,7 +28,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const slug = params?.product;
 	return await loadFromCms(GetProductSlugDocument, {
-		slug
+		slug,
+		PRODUCT_WIDTH,
+		PRODUCT_THUMBNAIL
 	});
 };
 

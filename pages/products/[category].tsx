@@ -7,6 +7,7 @@ import {
 	GetProductsSlugCategoryDocument,
 	GetProductsSlugCategoryQuery
 } from '@/graphcms/generated/graphql';
+import { PRODUCT_GRID_WIDTH } from '../../lib/costants';
 
 import { Products } from '@/components/features/products';
 
@@ -26,7 +27,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const slug = params?.category;
 	return await loadFromCms(GetProductsSlugCategoryDocument, {
-		slug
+		slug,
+		PRODUCT_GRID_WIDTH
 	});
 };
 

@@ -17,7 +17,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/components/*": ["lib/components/*"],
-			"@/graphcms/*": ["lib/graphcms/*"]
+			"@/graphcms/*": ["lib/graphcms/*"],
+			"@/hooks/*": ["lib/hooks/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

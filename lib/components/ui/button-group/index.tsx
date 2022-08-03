@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 export interface ButtonGroupProps {
 	current: number;
 	handleClick: (num: number) => void;
