@@ -2,7 +2,6 @@ query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: St
 	category(where: { slug: $slug }, stage: $stage) {
 		name
 		products(orderBy: price_ASC) {
-			description
 			id
 			image {
 				width
@@ -53,7 +52,9 @@ query getProductSlug(
 			name
 			slug
 		}
-		description
+		description {
+			html
+		}
 		id
 		image {
 			width

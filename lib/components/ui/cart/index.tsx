@@ -2,6 +2,7 @@ import React from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 import { ItemDto, useCartStore } from '@/hooks/cart';
+import { CartBottom } from './cart-bottom';
 import { CartIcon } from './cart-icon';
 import { CartGridCard } from './cart-grid';
 import { CartNoData } from './cart-no-data';
@@ -37,18 +38,19 @@ const Cart: React.FC = () => {
 					open ? 'translate-x-0 ' : 'translate-x-full'
 				}`}
 			>
-				<aside className="relative w-96 overflow-y-auto flex flex-col bg-white">
-					<div className="min-h-full">
-						<h2 className="sticky top-0 z-50 flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
+				<aside className="relative w-96 flex flex-col bg-white">
+					<div className="flex flex-col h-full">
+						<h2 className="flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
 							I miei acquisti
 						</h2>
-						<div className="px-6 mt-9">
+						<div className="no-scroll mt-4 h-4/6 overflow-y-auto">
 							{hasItems ? (
 								<CartGridCard data={items} handlerDeleteItem={handlerDeleteItem} />
 							) : (
 								<CartNoData toggle={toggle} />
 							)}
 						</div>
+						<div className="flex-1 pt-4 px-6">{hasItems ? <CartBottom total={total} /> : null}</div>
 					</div>
 				</aside>
 			</div>

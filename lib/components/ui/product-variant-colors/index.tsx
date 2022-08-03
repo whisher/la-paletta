@@ -10,7 +10,7 @@ export interface ProductVariantColorsProps {
 
 const ProductVariantColors: React.FC<ProductVariantColorsProps> = ({ data }) => {
 	return (
-		<ul className="flex w-full">
+		<ul className="flex">
 			{data.map((color) => {
 				return (
 					<li

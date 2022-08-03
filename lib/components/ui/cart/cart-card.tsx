@@ -25,7 +25,7 @@ const CartCard: React.FC<CartCardProps> = ({ data, handlerDeleteItem }) => {
 		addItem(item, 1);
 	};
 	return (
-		<div>
+		<>
 			<div className="flex items-center">
 				{/* eslint-disable */}
 				<div className="relative">
@@ -36,7 +36,7 @@ const CartCard: React.FC<CartCardProps> = ({ data, handlerDeleteItem }) => {
 					></span>
 				</div>
 				{/* eslint-enable */}
-				<p className="flex-1 text-lg text-ellipsis">{name}</p>
+				<p className="flex-1 text-base text-ellipsis">{name}</p>
 				<button
 					className="relative flex justify-center items-center p-1 rounded-full bg-white border-2 border-white"
 					onClick={() => handlerDeleteItem(data)}
@@ -57,7 +57,7 @@ const CartCard: React.FC<CartCardProps> = ({ data, handlerDeleteItem }) => {
 				<div className="w-2/6 text-center">{formatPrice(data.price)}</div>
 				<div className="w-2/6 text-right">{formatPrice(getTotalItem(data.id, data.color.id))}</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

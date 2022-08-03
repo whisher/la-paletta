@@ -36,7 +36,7 @@ const ProductCard: React.FC<ProductItemProps> = ({ data }) => {
 	};
 
 	return (
-		<article className="flex">
+		<article className="flex gap-12">
 			<div className="w-1/2 flex flex-col">
 				<div className="flex justify-center">
 					{/* eslint-disable */}
@@ -70,17 +70,15 @@ const ProductCard: React.FC<ProductItemProps> = ({ data }) => {
 				})}
 			</div>
 			<div className="w-1/2">
-				<h2 className="text-3xl font-bold text-brand-600">{name}</h2>
+				<h2 className="text-3xl font-bold">{name}</h2>
 				<h3 className="mt-6 text-2xl text-brand-300">{formatPrice(price)}</h3>
-				<h4 className="mt-10 text-lg max-w-lg">{description}</h4>
-				<ProductVariantColors data={productVariantColors} />
-				{items.map((item) => {
-					return (
-						<p key={item.id + item.color.id}>
-							{item.name}-{item.quantity}
-						</p>
-					);
-				})}
+				<div
+					className="mt-4 max-w-lg prose"
+					dangerouslySetInnerHTML={{ __html: String(description?.html) }}
+				></div>
+				<div className="flex justify-end mt-4">
+					<ProductVariantColors data={productVariantColors} />
+				</div>
 			</div>
 		</article>
 	);

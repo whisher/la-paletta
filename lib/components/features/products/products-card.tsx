@@ -17,7 +17,6 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
 	const { product } = routes;
 	const { image, name, price, slug, productVariantColors } = data;
 	const href = `${product}/${slug}`;
-	console.log('card', data);
 	return (
 		<Link href={href}>
 			<a>

@@ -11,11 +11,8 @@ export interface CartIconProps {
 
 const CartIcon: React.FC<CartIconProps> = ({ total, totalItems, toggle }) => {
 	return (
-		<div className="flex items-center">
-			<button
-				className="relative flex justify-center items-center p-1 rounded-full bg-white border-2 border-white"
-				onClick={toggle}
-			>
+		<div className="flex items-center cursor-pointer" onClick={toggle}>
+			<button className="relative flex justify-center items-center p-1 rounded-full bg-white border-2 border-white">
 				<AiOutlineShoppingCart className="text-brand-300 w-8 h-8" />
 				<span
 					className={classNames(
