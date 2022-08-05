@@ -5,7 +5,7 @@ export interface ButtonGroupProps {
 	handleClick: (num: number) => void;
 	labels: string[];
 }
-// py-2 px-4 text-sm font-medium  bg-white rounded-l-lg border border-gray-200
+
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ current, labels, handleClick }) => {
 	const [active, setActive] = useState<number>(current);
 	const handler = (num: number) => {
@@ -25,7 +25,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ current, labels, handleClick 
 								'border-r': length < 3,
 								'border-r border-y rounded-r-lg': i + 1 === length,
 								border: !(i === 0) && !(i + 1 === length),
-								'text-gray-800': active === i
+								underline: active === i
 							})}
 						>
 							{label}

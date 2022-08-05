@@ -13,7 +13,7 @@ const Nav: React.FC = () => {
 		if (router.pathname === path) {
 			return `${common} bg-black/90 text-white`;
 		}
-		return `${common} bg-white/90`;
+		return `${common} text-black/80 bg-white/90`;
 	};
 	return (
 		<nav>

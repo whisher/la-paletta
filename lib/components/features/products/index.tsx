@@ -47,7 +47,7 @@ const Products: React.FC<ProductsProps> = ({ data }) => {
 			<div className="flex justify-between items-center mt-3">
 				<Breadcrumb routes={routes} />
 				<div className="flex items-center">
-					<span className="pr-1 font-bold">Prezzo:</span>
+					<span className="pr-1 font-bold text-gray-400">Prezzo:</span>
 					<ButtonGroup current={0} handleClick={handleButtonGroupClick} labels={labels} />
 				</div>
 			</div>
