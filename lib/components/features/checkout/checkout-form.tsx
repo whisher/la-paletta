@@ -13,13 +13,12 @@ const CheckoutForm: React.FC = () => {
 	const onSubmit = handleSubmit((data) => {
 		console.log(data);
 	});
-	const isValidMail = (current: 'required' | 'pattern') => {
+	const isValidMail = (error: 'required' | 'pattern') => {
 		const label = errors.email && errors.email.type;
-
-		return String(label) === current;
+		return String(label) === error;
 	};
-	//console.log(errors.email);
-	const classes = `block w-full rounded-md border-gray-300 shadow focus:border-brand-400/50 focus:ring focus:ring-brand-400/50 focus:ring-opacity-50`;
+
+	const classes = `form-input block w-full py-2 px-3 text-black/80 rounded-md border border-gray-300 shadow focus:border-brand-400/50 focus:ring focus:ring-brand-400/50 focus:ring-opacity-50`;
 	return (
 		<form onSubmit={onSubmit} noValidate>
 			<div className="flex items-center gap-6">
@@ -76,11 +75,11 @@ const CheckoutForm: React.FC = () => {
 					{errors.pcode && <CheckoutError>Il cap è obbligatorio.</CheckoutError>}
 				</div>
 			</div>
-			<label className="flex items-center mt-2">
+			<label className="flex items-center mt-2 mb-3">
 				<input
 					type="checkbox"
-					className="rounded border-gray-300
-                          text-brand-black/80
+					className="rounded h-4 w-4 border-gray-300
+                          text-black/80 accent-brand-400
                           shadow
                           focus:border-brand-400/50
                           focus:ring

@@ -51,7 +51,7 @@ const Cart: React.FC = () => {
 							)}
 						</div>
 						<div className="flex-1 pt-4 px-6 bg-gray-300/10 rounded-t-lg">
-							{hasItems ? <CartBottom total={total} /> : null}
+							{hasItems ? <CartBottom total={total} toggle={toggle} /> : null}
 						</div>
 					</div>
 				</aside>

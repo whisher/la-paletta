@@ -1826,6 +1826,10 @@ export type Mutation = {
   createCategory: Maybe<Category>;
   /** Create one config */
   createConfig: Maybe<Config>;
+  /** Create one order */
+  createOrder: Maybe<Order>;
+  /** Create one orderItem */
+  createOrderItem: Maybe<OrderItem>;
   /** Create one product */
   createProduct: Maybe<Product>;
   /** Create one productVariantColor */
@@ -1860,6 +1864,20 @@ export type Mutation = {
   /** Delete many Config documents, return deleted documents */
   deleteManyConfigsConnection: ConfigConnection;
   /**
+   * Delete many OrderItem documents
+   * @deprecated Please use the new paginated many mutation (deleteManyOrderItemsConnection)
+   */
+  deleteManyOrderItems: BatchPayload;
+  /** Delete many OrderItem documents, return deleted documents */
+  deleteManyOrderItemsConnection: OrderItemConnection;
+  /**
+   * Delete many Order documents
+   * @deprecated Please use the new paginated many mutation (deleteManyOrdersConnection)
+   */
+  deleteManyOrders: BatchPayload;
+  /** Delete many Order documents, return deleted documents */
+  deleteManyOrdersConnection: OrderConnection;
+  /**
    * Delete many ProductVariantColor documents
    * @deprecated Please use the new paginated many mutation (deleteManyProductVariantColorsConnection)
    */
@@ -1873,6 +1891,10 @@ export type Mutation = {
   deleteManyProducts: BatchPayload;
   /** Delete many Product documents, return deleted documents */
   deleteManyProductsConnection: ProductConnection;
+  /** Delete one order from _all_ existing stages. Returns deleted document. */
+  deleteOrder: Maybe<Order>;
+  /** Delete one orderItem from _all_ existing stages. Returns deleted document. */
+  deleteOrderItem: Maybe<OrderItem>;
   /** Delete one product from _all_ existing stages. Returns deleted document. */
   deleteProduct: Maybe<Product>;
   /** Delete one productVariantColor from _all_ existing stages. Returns deleted document. */
@@ -1909,6 +1931,20 @@ export type Mutation = {
   /** Publish many Config documents */
   publishManyConfigsConnection: ConfigConnection;
   /**
+   * Publish many OrderItem documents
+   * @deprecated Please use the new paginated many mutation (publishManyOrderItemsConnection)
+   */
+  publishManyOrderItems: BatchPayload;
+  /** Publish many OrderItem documents */
+  publishManyOrderItemsConnection: OrderItemConnection;
+  /**
+   * Publish many Order documents
+   * @deprecated Please use the new paginated many mutation (publishManyOrdersConnection)
+   */
+  publishManyOrders: BatchPayload;
+  /** Publish many Order documents */
+  publishManyOrdersConnection: OrderConnection;
+  /**
    * Publish many ProductVariantColor documents
    * @deprecated Please use the new paginated many mutation (publishManyProductVariantColorsConnection)
    */
@@ -1922,6 +1958,10 @@ export type Mutation = {
   publishManyProducts: BatchPayload;
   /** Publish many Product documents */
   publishManyProductsConnection: ProductConnection;
+  /** Publish one order */
+  publishOrder: Maybe<Order>;
+  /** Publish one orderItem */
+  publishOrderItem: Maybe<OrderItem>;
   /** Publish one product */
   publishProduct: Maybe<Product>;
   /** Publish one productVariantColor */
@@ -1932,6 +1972,10 @@ export type Mutation = {
   schedulePublishCategory: Maybe<Category>;
   /** Schedule to publish one config */
   schedulePublishConfig: Maybe<Config>;
+  /** Schedule to publish one order */
+  schedulePublishOrder: Maybe<Order>;
+  /** Schedule to publish one orderItem */
+  schedulePublishOrderItem: Maybe<OrderItem>;
   /** Schedule to publish one product */
   schedulePublishProduct: Maybe<Product>;
   /** Schedule to publish one productVariantColor */
@@ -1942,6 +1986,10 @@ export type Mutation = {
   scheduleUnpublishCategory: Maybe<Category>;
   /** Unpublish one config from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishConfig: Maybe<Config>;
+  /** Unpublish one order from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishOrder: Maybe<Order>;
+  /** Unpublish one orderItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishOrderItem: Maybe<OrderItem>;
   /** Unpublish one product from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProduct: Maybe<Product>;
   /** Unpublish one productVariantColor from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -1974,6 +2022,20 @@ export type Mutation = {
   /** Find many Config documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyConfigsConnection: ConfigConnection;
   /**
+   * Unpublish many OrderItem documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyOrderItemsConnection)
+   */
+  unpublishManyOrderItems: BatchPayload;
+  /** Find many OrderItem documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyOrderItemsConnection: OrderItemConnection;
+  /**
+   * Unpublish many Order documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyOrdersConnection)
+   */
+  unpublishManyOrders: BatchPayload;
+  /** Find many Order documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyOrdersConnection: OrderConnection;
+  /**
    * Unpublish many ProductVariantColor documents
    * @deprecated Please use the new paginated many mutation (unpublishManyProductVariantColorsConnection)
    */
@@ -1987,6 +2049,10 @@ export type Mutation = {
   unpublishManyProducts: BatchPayload;
   /** Find many Product documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyProductsConnection: ProductConnection;
+  /** Unpublish one order from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishOrder: Maybe<Order>;
+  /** Unpublish one orderItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishOrderItem: Maybe<OrderItem>;
   /** Unpublish one product from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishProduct: Maybe<Product>;
   /** Unpublish one productVariantColor from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2019,6 +2085,20 @@ export type Mutation = {
   /** Update many Config documents */
   updateManyConfigsConnection: ConfigConnection;
   /**
+   * Update many orderItems
+   * @deprecated Please use the new paginated many mutation (updateManyOrderItemsConnection)
+   */
+  updateManyOrderItems: BatchPayload;
+  /** Update many OrderItem documents */
+  updateManyOrderItemsConnection: OrderItemConnection;
+  /**
+   * Update many orders
+   * @deprecated Please use the new paginated many mutation (updateManyOrdersConnection)
+   */
+  updateManyOrders: BatchPayload;
+  /** Update many Order documents */
+  updateManyOrdersConnection: OrderConnection;
+  /**
    * Update many productVariantColors
    * @deprecated Please use the new paginated many mutation (updateManyProductVariantColorsConnection)
    */
@@ -2032,6 +2112,10 @@ export type Mutation = {
   updateManyProducts: BatchPayload;
   /** Update many Product documents */
   updateManyProductsConnection: ProductConnection;
+  /** Update one order */
+  updateOrder: Maybe<Order>;
+  /** Update one orderItem */
+  updateOrderItem: Maybe<OrderItem>;
   /** Update one product */
   updateProduct: Maybe<Product>;
   /** Update one productVariantColor */
@@ -2044,6 +2128,10 @@ export type Mutation = {
   upsertCategory: Maybe<Category>;
   /** Upsert one config */
   upsertConfig: Maybe<Config>;
+  /** Upsert one order */
+  upsertOrder: Maybe<Order>;
+  /** Upsert one orderItem */
+  upsertOrderItem: Maybe<OrderItem>;
   /** Upsert one product */
   upsertProduct: Maybe<Product>;
   /** Upsert one productVariantColor */
@@ -2063,6 +2151,16 @@ export type MutationCreateCategoryArgs = {
 
 export type MutationCreateConfigArgs = {
   data: ConfigCreateInput;
+};
+
+
+export type MutationCreateOrderArgs = {
+  data: OrderCreateInput;
+};
+
+
+export type MutationCreateOrderItemArgs = {
+  data: OrderItemCreateInput;
 };
 
 
@@ -2141,6 +2239,36 @@ export type MutationDeleteManyConfigsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyOrderItemsArgs = {
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationDeleteManyOrderItemsConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationDeleteManyOrdersArgs = {
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
+export type MutationDeleteManyOrdersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
 export type MutationDeleteManyProductVariantColorsArgs = {
   where: InputMaybe<ProductVariantColorManyWhereInput>;
 };
@@ -2168,6 +2296,16 @@ export type MutationDeleteManyProductsConnectionArgs = {
   last: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   where: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationDeleteOrderArgs = {
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationDeleteOrderItemArgs = {
+  where: OrderItemWhereUniqueInput;
 };
 
 
@@ -2272,6 +2410,42 @@ export type MutationPublishManyConfigsConnectionArgs = {
 };
 
 
+export type MutationPublishManyOrderItemsArgs = {
+  to?: Array<Stage>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationPublishManyOrderItemsConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationPublishManyOrdersArgs = {
+  to?: Array<Stage>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
+export type MutationPublishManyOrdersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
 export type MutationPublishManyProductVariantColorsArgs = {
   to?: Array<Stage>;
   where: InputMaybe<ProductVariantColorManyWhereInput>;
@@ -2305,6 +2479,18 @@ export type MutationPublishManyProductsConnectionArgs = {
   skip: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationPublishOrderArgs = {
+  to?: Array<Stage>;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationPublishOrderItemArgs = {
+  to?: Array<Stage>;
+  where: OrderItemWhereUniqueInput;
 };
 
 
@@ -2347,6 +2533,22 @@ export type MutationSchedulePublishConfigArgs = {
 };
 
 
+export type MutationSchedulePublishOrderArgs = {
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishOrderItemArgs = {
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: OrderItemWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishProductArgs = {
   releaseAt: InputMaybe<Scalars['DateTime']>;
   releaseId: InputMaybe<Scalars['String']>;
@@ -2386,6 +2588,22 @@ export type MutationScheduleUnpublishConfigArgs = {
   releaseAt: InputMaybe<Scalars['DateTime']>;
   releaseId: InputMaybe<Scalars['String']>;
   where: ConfigWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishOrderArgs = {
+  from?: Array<Stage>;
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishOrderItemArgs = {
+  from?: Array<Stage>;
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  where: OrderItemWhereUniqueInput;
 };
 
 
@@ -2483,6 +2701,42 @@ export type MutationUnpublishManyConfigsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyOrderItemsArgs = {
+  from?: Array<Stage>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyOrderItemsConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyOrdersArgs = {
+  from?: Array<Stage>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyOrdersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyProductVariantColorsArgs = {
   from?: Array<Stage>;
   where: InputMaybe<ProductVariantColorManyWhereInput>;
@@ -2516,6 +2770,18 @@ export type MutationUnpublishManyProductsConnectionArgs = {
   skip: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationUnpublishOrderArgs = {
+  from?: Array<Stage>;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationUnpublishOrderItemArgs = {
+  from?: Array<Stage>;
+  where: OrderItemWhereUniqueInput;
 };
 
 
@@ -2600,6 +2866,40 @@ export type MutationUpdateManyConfigsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyOrderItemsArgs = {
+  data: OrderItemUpdateManyInput;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationUpdateManyOrderItemsConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  data: OrderItemUpdateManyInput;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderItemManyWhereInput>;
+};
+
+
+export type MutationUpdateManyOrdersArgs = {
+  data: OrderUpdateManyInput;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
+export type MutationUpdateManyOrdersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  data: OrderUpdateManyInput;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderManyWhereInput>;
+};
+
+
 export type MutationUpdateManyProductVariantColorsArgs = {
   data: ProductVariantColorUpdateManyInput;
   where: InputMaybe<ProductVariantColorManyWhereInput>;
@@ -2631,6 +2931,18 @@ export type MutationUpdateManyProductsConnectionArgs = {
   last: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   where: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationUpdateOrderArgs = {
+  data: OrderUpdateInput;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationUpdateOrderItemArgs = {
+  data: OrderItemUpdateInput;
+  where: OrderItemWhereUniqueInput;
 };
 
 
@@ -2670,6 +2982,18 @@ export type MutationUpsertConfigArgs = {
 };
 
 
+export type MutationUpsertOrderArgs = {
+  upsert: OrderUpsertInput;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type MutationUpsertOrderItemArgs = {
+  upsert: OrderItemUpsertInput;
+  where: OrderItemWhereUniqueInput;
+};
+
+
 export type MutationUpsertProductArgs = {
   upsert: ProductUpsertInput;
   where: ProductWhereUniqueInput;
@@ -2687,6 +3011,955 @@ export type Node = {
   id: Scalars['ID'];
   /** The Stage of an object */
   stage: Stage;
+};
+
+export type Order = Node & {
+  __typename?: 'Order';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Order>;
+  email: Scalars['String'];
+  /** List of Order versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  orderItems: Array<OrderItem>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  stripeCheckoutId: Scalars['String'];
+  total: Scalars['Int'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<User>;
+};
+
+
+export type OrderCreatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type OrderHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: InputMaybe<Stage>;
+};
+
+
+export type OrderOrderItemsArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  orderBy: InputMaybe<OrderItemOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderItemWhereInput>;
+};
+
+
+export type OrderPublishedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderScheduledInArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type OrderUpdatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+export type OrderConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: OrderWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type OrderConnection = {
+  __typename?: 'OrderConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<OrderEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type OrderCreateInput = {
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  orderItems: InputMaybe<OrderItemCreateManyInlineInput>;
+  stripeCheckoutId: Scalars['String'];
+  total: Scalars['Int'];
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+};
+
+export type OrderCreateManyInlineInput = {
+  /** Connect multiple existing Order documents */
+  connect: InputMaybe<Array<OrderWhereUniqueInput>>;
+  /** Create and connect multiple existing Order documents */
+  create: InputMaybe<Array<OrderCreateInput>>;
+};
+
+export type OrderCreateOneInlineInput = {
+  /** Connect one existing Order document */
+  connect: InputMaybe<OrderWhereUniqueInput>;
+  /** Create and connect one Order document */
+  create: InputMaybe<OrderCreateInput>;
+};
+
+/** An edge in a connection. */
+export type OrderEdge = {
+  __typename?: 'OrderEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Order;
+};
+
+export type OrderItem = Node & {
+  __typename?: 'OrderItem';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<OrderItem>;
+  /** List of OrderItem versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  order: Maybe<Order>;
+  product: Maybe<Product>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<User>;
+  quantity: Scalars['Int'];
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  total: Scalars['Int'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<User>;
+};
+
+
+export type OrderItemCreatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderItemDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type OrderItemHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: InputMaybe<Stage>;
+};
+
+
+export type OrderItemOrderArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderItemProductArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderItemPublishedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderItemScheduledInArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type OrderItemUpdatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+export type OrderItemConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: OrderItemWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type OrderItemConnection = {
+  __typename?: 'OrderItemConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<OrderItemEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type OrderItemCreateInput = {
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  order: InputMaybe<OrderCreateOneInlineInput>;
+  product: InputMaybe<ProductCreateOneInlineInput>;
+  quantity: Scalars['Int'];
+  total: Scalars['Int'];
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+};
+
+export type OrderItemCreateManyInlineInput = {
+  /** Connect multiple existing OrderItem documents */
+  connect: InputMaybe<Array<OrderItemWhereUniqueInput>>;
+  /** Create and connect multiple existing OrderItem documents */
+  create: InputMaybe<Array<OrderItemCreateInput>>;
+};
+
+export type OrderItemCreateOneInlineInput = {
+  /** Connect one existing OrderItem document */
+  connect: InputMaybe<OrderItemWhereUniqueInput>;
+  /** Create and connect one OrderItem document */
+  create: InputMaybe<OrderItemCreateInput>;
+};
+
+/** An edge in a connection. */
+export type OrderItemEdge = {
+  __typename?: 'OrderItemEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: OrderItem;
+};
+
+/** Identifies documents */
+export type OrderItemManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  order: InputMaybe<OrderWhereInput>;
+  product: InputMaybe<ProductWhereInput>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  quantity: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  quantity_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  quantity_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  quantity_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  quantity_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  quantity_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  quantity_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  quantity_not_in: InputMaybe<Array<Scalars['Int']>>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  total: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  total_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  total_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  total_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  total_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  total_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  total_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  total_not_in: InputMaybe<Array<Scalars['Int']>>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+export enum OrderItemOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  QuantityAsc = 'quantity_ASC',
+  QuantityDesc = 'quantity_DESC',
+  TotalAsc = 'total_ASC',
+  TotalDesc = 'total_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type OrderItemUpdateInput = {
+  order: InputMaybe<OrderUpdateOneInlineInput>;
+  product: InputMaybe<ProductUpdateOneInlineInput>;
+  quantity: InputMaybe<Scalars['Int']>;
+  total: InputMaybe<Scalars['Int']>;
+};
+
+export type OrderItemUpdateManyInlineInput = {
+  /** Connect multiple existing OrderItem documents */
+  connect: InputMaybe<Array<OrderItemConnectInput>>;
+  /** Create and connect multiple OrderItem documents */
+  create: InputMaybe<Array<OrderItemCreateInput>>;
+  /** Delete multiple OrderItem documents */
+  delete: InputMaybe<Array<OrderItemWhereUniqueInput>>;
+  /** Disconnect multiple OrderItem documents */
+  disconnect: InputMaybe<Array<OrderItemWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing OrderItem documents */
+  set: InputMaybe<Array<OrderItemWhereUniqueInput>>;
+  /** Update multiple OrderItem documents */
+  update: InputMaybe<Array<OrderItemUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple OrderItem documents */
+  upsert: InputMaybe<Array<OrderItemUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type OrderItemUpdateManyInput = {
+  quantity: InputMaybe<Scalars['Int']>;
+  total: InputMaybe<Scalars['Int']>;
+};
+
+export type OrderItemUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: OrderItemUpdateManyInput;
+  /** Document search */
+  where: OrderItemWhereInput;
+};
+
+export type OrderItemUpdateOneInlineInput = {
+  /** Connect existing OrderItem document */
+  connect: InputMaybe<OrderItemWhereUniqueInput>;
+  /** Create and connect one OrderItem document */
+  create: InputMaybe<OrderItemCreateInput>;
+  /** Delete currently connected OrderItem document */
+  delete: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected OrderItem document */
+  disconnect: InputMaybe<Scalars['Boolean']>;
+  /** Update single OrderItem document */
+  update: InputMaybe<OrderItemUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single OrderItem document */
+  upsert: InputMaybe<OrderItemUpsertWithNestedWhereUniqueInput>;
+};
+
+export type OrderItemUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: OrderItemUpdateInput;
+  /** Unique document search */
+  where: OrderItemWhereUniqueInput;
+};
+
+export type OrderItemUpsertInput = {
+  /** Create document if it didn't exist */
+  create: OrderItemCreateInput;
+  /** Update document if it exists */
+  update: OrderItemUpdateInput;
+};
+
+export type OrderItemUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: OrderItemUpsertInput;
+  /** Unique document search */
+  where: OrderItemWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type OrderItemWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<OrderItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  order: InputMaybe<OrderWhereInput>;
+  product: InputMaybe<ProductWhereInput>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  quantity: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  quantity_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  quantity_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  quantity_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  quantity_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  quantity_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  quantity_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  quantity_not_in: InputMaybe<Array<Scalars['Int']>>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  total: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  total_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  total_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  total_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  total_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  total_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  total_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  total_not_in: InputMaybe<Array<Scalars['Int']>>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+/** References OrderItem record uniquely */
+export type OrderItemWhereUniqueInput = {
+  id: InputMaybe<Scalars['ID']>;
+};
+
+/** Identifies documents */
+export type OrderManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<OrderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<OrderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<OrderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  email: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  email_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  email_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  email_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  email_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  email_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  email_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  email_not_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  email_starts_with: InputMaybe<Scalars['String']>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  stripeCheckoutId: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  stripeCheckoutId_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  stripeCheckoutId_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  stripeCheckoutId_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  stripeCheckoutId_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  stripeCheckoutId_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  stripeCheckoutId_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  stripeCheckoutId_not_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  stripeCheckoutId_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  stripeCheckoutId_starts_with: InputMaybe<Scalars['String']>;
+  total: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  total_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  total_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  total_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  total_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  total_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  total_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  total_not_in: InputMaybe<Array<Scalars['Int']>>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+export enum OrderOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  StripeCheckoutIdAsc = 'stripeCheckoutId_ASC',
+  StripeCheckoutIdDesc = 'stripeCheckoutId_DESC',
+  TotalAsc = 'total_ASC',
+  TotalDesc = 'total_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type OrderUpdateInput = {
+  email: InputMaybe<Scalars['String']>;
+  orderItems: InputMaybe<OrderItemUpdateManyInlineInput>;
+  stripeCheckoutId: InputMaybe<Scalars['String']>;
+  total: InputMaybe<Scalars['Int']>;
+};
+
+export type OrderUpdateManyInlineInput = {
+  /** Connect multiple existing Order documents */
+  connect: InputMaybe<Array<OrderConnectInput>>;
+  /** Create and connect multiple Order documents */
+  create: InputMaybe<Array<OrderCreateInput>>;
+  /** Delete multiple Order documents */
+  delete: InputMaybe<Array<OrderWhereUniqueInput>>;
+  /** Disconnect multiple Order documents */
+  disconnect: InputMaybe<Array<OrderWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Order documents */
+  set: InputMaybe<Array<OrderWhereUniqueInput>>;
+  /** Update multiple Order documents */
+  update: InputMaybe<Array<OrderUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Order documents */
+  upsert: InputMaybe<Array<OrderUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type OrderUpdateManyInput = {
+  email: InputMaybe<Scalars['String']>;
+  stripeCheckoutId: InputMaybe<Scalars['String']>;
+  total: InputMaybe<Scalars['Int']>;
+};
+
+export type OrderUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: OrderUpdateManyInput;
+  /** Document search */
+  where: OrderWhereInput;
+};
+
+export type OrderUpdateOneInlineInput = {
+  /** Connect existing Order document */
+  connect: InputMaybe<OrderWhereUniqueInput>;
+  /** Create and connect one Order document */
+  create: InputMaybe<OrderCreateInput>;
+  /** Delete currently connected Order document */
+  delete: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Order document */
+  disconnect: InputMaybe<Scalars['Boolean']>;
+  /** Update single Order document */
+  update: InputMaybe<OrderUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Order document */
+  upsert: InputMaybe<OrderUpsertWithNestedWhereUniqueInput>;
+};
+
+export type OrderUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: OrderUpdateInput;
+  /** Unique document search */
+  where: OrderWhereUniqueInput;
+};
+
+export type OrderUpsertInput = {
+  /** Create document if it didn't exist */
+  create: OrderCreateInput;
+  /** Update document if it exists */
+  update: OrderUpdateInput;
+};
+
+export type OrderUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: OrderUpsertInput;
+  /** Unique document search */
+  where: OrderWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type OrderWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<OrderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<OrderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<OrderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  email: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  email_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  email_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  email_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  email_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  email_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  email_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  email_not_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  email_starts_with: InputMaybe<Scalars['String']>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  stripeCheckoutId: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  stripeCheckoutId_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  stripeCheckoutId_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  stripeCheckoutId_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  stripeCheckoutId_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  stripeCheckoutId_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  stripeCheckoutId_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  stripeCheckoutId_not_in: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  stripeCheckoutId_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  stripeCheckoutId_starts_with: InputMaybe<Scalars['String']>;
+  total: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  total_gt: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  total_gte: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  total_in: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  total_lt: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  total_lte: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  total_not: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  total_not_in: InputMaybe<Array<Scalars['Int']>>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+/** References Order record uniquely */
+export type OrderWhereUniqueInput = {
+  id: InputMaybe<Scalars['ID']>;
 };
 
 /** Information about pagination in a connection. */
@@ -2720,6 +3993,7 @@ export type Product = Node & {
   id: Scalars['ID'];
   image: Asset;
   name: Scalars['String'];
+  orderItems: Array<OrderItem>;
   price: Scalars['Int'];
   productVariantColors: Array<ProductVariantColor>;
   /** The time the document was published. Null on documents in draft stage. */
@@ -2770,6 +4044,18 @@ export type ProductHistoryArgs = {
 
 export type ProductImageArgs = {
   locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type ProductOrderItemsArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  orderBy: InputMaybe<OrderItemOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderItemWhereInput>;
 };
 
 
@@ -2836,6 +4122,7 @@ export type ProductCreateInput = {
   description: InputMaybe<Scalars['RichTextAST']>;
   image: AssetCreateOneInlineInput;
   name: Scalars['String'];
+  orderItems: InputMaybe<OrderItemCreateManyInlineInput>;
   price: Scalars['Int'];
   productVariantColors: InputMaybe<ProductVariantColorCreateManyInlineInput>;
   slug: InputMaybe<Scalars['String']>;
@@ -2933,6 +4220,9 @@ export type ProductManyWhereInput = {
   name_not_starts_with: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with: InputMaybe<Scalars['String']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
   price: InputMaybe<Scalars['Int']>;
   /** All values greater than the given value. */
   price_gt: InputMaybe<Scalars['Int']>;
@@ -3029,6 +4319,7 @@ export type ProductUpdateInput = {
   description: InputMaybe<Scalars['RichTextAST']>;
   image: InputMaybe<AssetUpdateOneInlineInput>;
   name: InputMaybe<Scalars['String']>;
+  orderItems: InputMaybe<OrderItemUpdateManyInlineInput>;
   price: InputMaybe<Scalars['Int']>;
   productVariantColors: InputMaybe<ProductVariantColorUpdateManyInlineInput>;
   slug: InputMaybe<Scalars['String']>;
@@ -3633,6 +4924,9 @@ export type ProductWhereInput = {
   name_not_starts_with: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with: InputMaybe<Scalars['String']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
   price: InputMaybe<Scalars['Int']>;
   /** All values greater than the given value. */
   price_gt: InputMaybe<Scalars['Int']>;
@@ -3749,6 +5043,22 @@ export type Query = {
   configsConnection: ConfigConnection;
   /** Fetches an object given its ID */
   node: Maybe<Node>;
+  /** Retrieve a single order */
+  order: Maybe<Order>;
+  /** Retrieve a single orderItem */
+  orderItem: Maybe<OrderItem>;
+  /** Retrieve document version */
+  orderItemVersion: Maybe<DocumentVersion>;
+  /** Retrieve multiple orderItems */
+  orderItems: Array<OrderItem>;
+  /** Retrieve multiple orderItems using the Relay connection interface */
+  orderItemsConnection: OrderItemConnection;
+  /** Retrieve document version */
+  orderVersion: Maybe<DocumentVersion>;
+  /** Retrieve multiple orders */
+  orders: Array<Order>;
+  /** Retrieve multiple orders using the Relay connection interface */
+  ordersConnection: OrderConnection;
   /** Retrieve a single product */
   product: Maybe<Product>;
   /** Retrieve a single productVariantColor */
@@ -3904,6 +5214,82 @@ export type QueryNodeArgs = {
   id: Scalars['ID'];
   locales?: Array<Locale>;
   stage?: Stage;
+};
+
+
+export type QueryOrderArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: OrderWhereUniqueInput;
+};
+
+
+export type QueryOrderItemArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: OrderItemWhereUniqueInput;
+};
+
+
+export type QueryOrderItemVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryOrderItemsArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<OrderItemOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<OrderItemWhereInput>;
+};
+
+
+export type QueryOrderItemsConnectionArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<OrderItemOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<OrderItemWhereInput>;
+};
+
+
+export type QueryOrderVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryOrdersArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<OrderOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<OrderWhereInput>;
+};
+
+
+export type QueryOrdersConnectionArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<OrderOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<OrderWhereInput>;
 };
 
 
@@ -4188,7 +5574,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Category | Config | Product | ProductVariantColor;
+export type ScheduledOperationAffectedDocument = Asset | Category | Config | Order | OrderItem | Product | ProductVariantColor;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -5592,6 +6978,20 @@ export type GetCategoriesSlugQueryVariables = Exact<{
 
 export type GetCategoriesSlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string }> };
 
+export type CreateOrderMutationMutationVariables = Exact<{
+  order: OrderCreateInput;
+}>;
+
+
+export type CreateOrderMutationMutation = { __typename?: 'Mutation', order: { __typename?: 'Order', id: string } | null };
+
+export type CreateOrderItemsMutationMutationVariables = Exact<{
+  ordeItems: OrderItemCreateInput;
+}>;
+
+
+export type CreateOrderItemsMutationMutation = { __typename?: 'Mutation', orderItems: { __typename?: 'OrderItem', id: string } | null };
+
 export type GetProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
   imageWidth?: InputMaybe<Scalars['Int']>;
@@ -5640,6 +7040,20 @@ export const GetCategoriesSlug = gql`
     query getCategoriesSlug($stage: Stage = PUBLISHED) {
   categories(stage: $stage) {
     slug
+  }
+}
+    `;
+export const CreateOrderMutation = gql`
+    mutation createOrderMutation($order: OrderCreateInput!) {
+  order: createOrder(data: $order) {
+    id
+  }
+}
+    `;
+export const CreateOrderItemsMutation = gql`
+    mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
+  orderItems: createOrderItem(data: $ordeItems) {
+    id
   }
 }
     `;
@@ -5748,6 +7162,28 @@ export const GetCategoriesSlugDocument = gql`
 
 export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCategoriesSlugQueryVariables>, 'query'>) {
   return Urql.useQuery<GetCategoriesSlugQuery, GetCategoriesSlugQueryVariables>({ query: GetCategoriesSlugDocument, ...options });
+};
+export const CreateOrderMutationDocument = gql`
+    mutation createOrderMutation($order: OrderCreateInput!) {
+  order: createOrder(data: $order) {
+    id
+  }
+}
+    `;
+
+export function useCreateOrderMutationMutation() {
+  return Urql.useMutation<CreateOrderMutationMutation, CreateOrderMutationMutationVariables>(CreateOrderMutationDocument);
+};
+export const CreateOrderItemsMutationDocument = gql`
+    mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
+  orderItems: createOrderItem(data: $ordeItems) {
+    id
+  }
+}
+    `;
+
+export function useCreateOrderItemsMutationMutation() {
+  return Urql.useMutation<CreateOrderItemsMutationMutation, CreateOrderItemsMutationMutationVariables>(CreateOrderItemsMutationDocument);
 };
 export const GetProductsSlugCategoryDocument = gql`
     query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
@@ -7650,6 +9086,46 @@ export default {
             ]
           },
           {
+            "name": "createOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "createProduct",
             "type": {
               "kind": "OBJECT",
@@ -7995,6 +9471,156 @@ export default {
             ]
           },
           {
+            "name": "deleteManyOrderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteManyOrderItemsConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItemConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteManyOrders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteManyOrdersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "deleteManyProductVariantColors",
             "type": {
               "kind": "NON_NULL",
@@ -8140,6 +9766,46 @@ export default {
                 "type": {
                   "kind": "SCALAR",
                   "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
                 }
               }
             ]
@@ -8756,6 +10422,234 @@ export default {
             ]
           },
           {
+            "name": "publishManyOrderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishManyOrderItemsConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItemConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishManyOrders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishManyOrdersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "publishManyProductVariantColors",
             "type": {
               "kind": "NON_NULL",
@@ -8984,6 +10878,78 @@ export default {
             ]
           },
           {
+            "name": "publishOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "publishProduct",
             "type": {
               "kind": "OBJECT",
@@ -9187,6 +11153,106 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "Config",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "schedulePublishOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "schedulePublishOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
               "ofType": null
             },
             "args": [
@@ -9457,6 +11523,106 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "Config",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "scheduleUnpublishOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "scheduleUnpublishOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
               "ofType": null
             },
             "args": [
@@ -10113,6 +12279,234 @@ export default {
             ]
           },
           {
+            "name": "unpublishManyOrderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishManyOrderItemsConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItemConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishManyOrders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishManyOrdersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "unpublishManyProductVariantColors",
             "type": {
               "kind": "NON_NULL",
@@ -10336,6 +12730,78 @@ export default {
                 "type": {
                   "kind": "SCALAR",
                   "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
                 }
               }
             ]
@@ -10788,6 +13254,196 @@ export default {
             ]
           },
           {
+            "name": "updateManyOrderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateManyOrderItemsConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItemConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateManyOrders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateManyOrdersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "updateManyProductVariantColors",
             "type": {
               "kind": "NON_NULL",
@@ -10978,6 +13634,66 @@ export default {
             ]
           },
           {
+            "name": "updateOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "updateProduct",
             "type": {
               "kind": "OBJECT",
@@ -11158,6 +13874,66 @@ export default {
             ]
           },
           {
+            "name": "upsertOrder",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "upsert",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "upsertOrderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "upsert",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "upsertProduct",
             "type": {
               "kind": "OBJECT",
@@ -11263,6 +14039,14 @@ export default {
           },
           {
             "kind": "OBJECT",
+            "name": "Order"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "OrderItem"
+          },
+          {
+            "kind": "OBJECT",
             "name": "Product"
           },
           {
@@ -11282,6 +14066,962 @@ export default {
             "name": "User"
           }
         ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Order",
+        "fields": [
+          {
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "createdBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "documentInStages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Order",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "includeCurrent",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "inheritLocale",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stages",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "email",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "history",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Version",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stageOverride",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "orderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItem",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "publishedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "scheduledIn",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "ScheduledOperation",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "stage",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "stripeCheckoutId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "total",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "OrderConnection",
+        "fields": [
+          {
+            "name": "aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Aggregate",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "edges",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderEdge",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "pageInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "OrderEdge",
+        "fields": [
+          {
+            "name": "cursor",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "node",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Order",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "OrderItem",
+        "fields": [
+          {
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "createdBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "documentInStages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItem",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "includeCurrent",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "inheritLocale",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stages",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "history",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Version",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stageOverride",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "order",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "product",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Product",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "publishedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "quantity",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "scheduledIn",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "ScheduledOperation",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "stage",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "total",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "OrderItemConnection",
+        "fields": [
+          {
+            "name": "aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Aggregate",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "edges",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItemEdge",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "pageInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "OrderItemEdge",
+        "fields": [
+          {
+            "name": "cursor",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "node",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItem",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
       },
       {
         "kind": "OBJECT",
@@ -11612,6 +15352,87 @@ export default {
               }
             },
             "args": []
+          },
+          {
+            "name": "orderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItem",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
           },
           {
             "name": "price",
@@ -13157,6 +16978,502 @@ export default {
                     "kind": "SCALAR",
                     "name": "Any"
                   }
+                }
+              }
+            ]
+          },
+          {
+            "name": "order",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Order",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "orderItem",
+            "type": {
+              "kind": "OBJECT",
+              "name": "OrderItem",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "orderItemVersion",
+            "type": {
+              "kind": "OBJECT",
+              "name": "DocumentVersion",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "orderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItem",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "orderItemsConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderItemConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "orderVersion",
+            "type": {
+              "kind": "OBJECT",
+              "name": "DocumentVersion",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "orders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Order",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "ordersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "OrderConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
                 }
               }
             ]
@@ -14777,6 +19094,14 @@ export default {
           {
             "kind": "OBJECT",
             "name": "Config"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Order"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "OrderItem"
           },
           {
             "kind": "OBJECT",

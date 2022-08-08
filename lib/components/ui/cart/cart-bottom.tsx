@@ -8,12 +8,14 @@ import { Button } from '@/components/ui/button';
 
 export interface CartBottomProps {
 	total: number;
+	toggle: () => void;
 }
 
-const CartBottom: React.FC<CartBottomProps> = ({ total }) => {
+const CartBottom: React.FC<CartBottomProps> = ({ total, toggle }) => {
 	const { checkout } = routes;
 	const handlerSetCookie = () => {
 		setCookie(COOKIE_CHECKOUT, true);
+		toggle();
 	};
 	return (
 		<Link href={checkout}>
