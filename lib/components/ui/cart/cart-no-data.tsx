@@ -6,7 +6,7 @@ export interface CartNoDataProps {
 }
 const CartNoData: React.FC<CartNoDataProps> = ({ toggle }) => {
 	return (
-		<div className="flex flex-col items-start gap-2.5">
+		<div className="flex flex-col items-start gap-2.5 px-6">
 			<div className="flex items-center">
 				<AiOutlineFrown className="text-brand-300 w-8 h-8" />
 				<p className="flex-1 pl-2">Il tuo carrello è vuoto.</p>

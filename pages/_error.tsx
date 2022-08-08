@@ -1,4 +1,5 @@
 import { NextPageContext } from 'next';
+import { Page500 } from '@/components/layout/500';
 
 interface ErrorPageProps {
 	statusCode: number;
@@ -6,11 +7,9 @@ interface ErrorPageProps {
 
 const ErrorPage = ({ statusCode }: ErrorPageProps) => {
 	return (
-		<p>
-			{statusCode
-				? `Something wrong has happened with error ${statusCode}`
-				: 'Something wrong has happened'}
-		</p>
+		<Page500>
+			{statusCode ? `An error ${statusCode} occurred on server` : 'An error occurred on client'}
+		</Page500>
 	);
 };
 
@@ -19,4 +18,4 @@ ErrorPage.getInitialProps = ({ res, err }: NextPageContext) => {
 	return { statusCode };
 };
 
-export default Error;
+export default ErrorPage;

@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
+import { Page404 } from '@/components/layout/404';
 
 const LaPaletta404: NextPage = () => {
-	return <h1 className="text-3xl font-bold underline">404 Hello world!</h1>;
+	return <Page404 />;
 };
 
 export default LaPaletta404;

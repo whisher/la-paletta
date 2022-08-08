@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import { Button } from '@/components/ui/button';
 
-const About: NextPage = () => {
+const AboutPage: NextPage = () => {
 	return (
 		<div className="h-screen flex justify-center items-center">
-			<Button>buy</Button>
+			<Button>Checkot</Button>
 		</div>
 	);
 };
 
-export default About;
+export default AboutPage;

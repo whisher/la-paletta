@@ -26,7 +26,7 @@ const CartIcon: React.FC<CartIconProps> = ({ total, totalItems, toggle }) => {
 					{totalItems}
 				</span>
 			</button>
-			<span className="pl-2 text-white font-mono">{formatPrice(total)}</span>
+			<span className="pl-2 text-white">{formatPrice(total)}</span>
 		</div>
 	);
 };

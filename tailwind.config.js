@@ -29,9 +29,14 @@ module.exports = {
 				}
 			},
 			fontFamily: {
-				sans: ['Space Grotesk', ...defaultTheme.fontFamily.sans]
+				sans: ['Mulish', ...defaultTheme.fontFamily.sans]
 			}
 		}
 	},
-	plugins: [require('@tailwindcss/typography')]
+	plugins: [
+		require('@tailwindcss/forms')({
+			strategy: 'class' // only generate classes
+		}),
+		require('@tailwindcss/typography')
+	]
 };

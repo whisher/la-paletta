@@ -1,0 +1,10 @@
+mutation createOrderMutation($order: OrderCreateInput!) {
+	order: createOrder(data: $order) {
+		id
+	}
+}
+mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
+	orderItems: createOrderItem(data: $ordeItems) {
+		id
+	}
+}

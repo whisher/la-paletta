@@ -6,14 +6,14 @@ import { routes } from '../../../costants';
 
 const Nav: React.FC = () => {
 	const router = useRouter();
-	const { about, shop } = routes;
+	const { about } = routes;
 	const common =
 		'h-[30px] flex items-center leading-4 px-[9px] shadow-sm rounded-xl uppercase tracking-tight backdrop-blur-2xl transition ease-in-out duration-300';
 	const isActiveLink = (path: string): string => {
 		if (router.pathname === path) {
 			return `${common} bg-black/90 text-white`;
 		}
-		return `${common} bg-white/90`;
+		return `${common} text-black/80 bg-white/90`;
 	};
 	return (
 		<nav>
@@ -21,11 +21,6 @@ const Nav: React.FC = () => {
 				<li>
 					<Link href="/">
 						<a className={isActiveLink('/')}>Home</a>
-					</Link>
-				</li>
-				<li>
-					<Link href={shop}>
-						<a className={isActiveLink(shop)}>Shop</a>
 					</Link>
 				</li>
 				<li>
