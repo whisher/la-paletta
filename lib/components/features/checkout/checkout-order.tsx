@@ -24,8 +24,8 @@ const CheckoutOrder: React.FC<CheckoutOrderProps> = ({ data, total, toggle }) =>
 				</button>
 			</div>
 			<ul className="flex flex-col gap-y-2">
-				{data.map((item) => {
-					return <CheckoutOrderCard key={item.id} data={item} />;
+				{data.map((item, i) => {
+					return <CheckoutOrderCard key={item.id + i} data={item} />;
 				})}
 			</ul>
 			<ul className="flex justify-between items-center mt-3 text-lg">

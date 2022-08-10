@@ -8,3 +8,22 @@ mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
 		id
 	}
 }
+
+query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
+	product(where: { id: $pid }, stage: $stage) {
+		id
+		image {
+			url(
+				transformation: {
+					image: { resize: { width: $imageWidth, fit: clip } }
+					document: { output: { format: webp } }
+				}
+			)
+		}
+		name
+		price
+	}
+	productVariantColor(where: { id: $cid }) {
+		name
+	}
+}

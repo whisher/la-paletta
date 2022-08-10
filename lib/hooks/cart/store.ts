@@ -4,6 +4,7 @@ import { CartState, ItemDto, ProductDto } from './type';
 const useCartStore = create<CartState>((set, get) => ({
 	items: [],
 	open: false,
+	account: null,
 	toggle: () => {
 		const { open } = get();
 		set((state) => ({

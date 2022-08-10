@@ -11,9 +11,16 @@ export type ItemDto = {
 	price: number;
 	quantity?: number;
 };
+export interface AccountDto {
+	fullname: string;
+	email: string;
+	address: string;
+}
+
 export type CartState = {
 	items: ItemDto[];
 	open: boolean;
+	account: AccountDto | null;
 	toggle: () => void;
 	addItem: (item: ItemDto, quantity: number) => void;
 	updateQuantityItem: (

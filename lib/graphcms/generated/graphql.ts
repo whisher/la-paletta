@@ -6992,6 +6992,16 @@ export type CreateOrderItemsMutationMutationVariables = Exact<{
 
 export type CreateOrderItemsMutationMutation = { __typename?: 'Mutation', orderItems: { __typename?: 'OrderItem', id: string } | null };
 
+export type GetOrderProductQueryVariables = Exact<{
+  pid: Scalars['ID'];
+  cid: Scalars['ID'];
+  imageWidth?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type GetOrderProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: string, name: string, price: number, image: { __typename?: 'Asset', url: string }, description: { __typename?: 'RichText', html: string } | null } | null, productVariantColor: { __typename?: 'ProductVariantColor', name: string } | null };
+
 export type GetProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
   imageWidth?: InputMaybe<Scalars['Int']>;
@@ -7054,6 +7064,26 @@ export const CreateOrderItemsMutation = gql`
     mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
   orderItems: createOrderItem(data: $ordeItems) {
     id
+  }
+}
+    `;
+export const GetOrderProduct = gql`
+    query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
+  product(where: {id: $pid}, stage: $stage) {
+    id
+    image {
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+    }
+    description {
+      html
+    }
+    name
+    price
+  }
+  productVariantColor(where: {id: $cid}) {
+    name
   }
 }
     `;
@@ -7184,6 +7214,30 @@ export const CreateOrderItemsMutationDocument = gql`
 
 export function useCreateOrderItemsMutationMutation() {
   return Urql.useMutation<CreateOrderItemsMutationMutation, CreateOrderItemsMutationMutationVariables>(CreateOrderItemsMutationDocument);
+};
+export const GetOrderProductDocument = gql`
+    query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
+  product(where: {id: $pid}, stage: $stage) {
+    id
+    image {
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+    }
+    description {
+      html
+    }
+    name
+    price
+  }
+  productVariantColor(where: {id: $cid}) {
+    name
+  }
+}
+    `;
+
+export function useGetOrderProductQuery(options: Omit<Urql.UseQueryArgs<GetOrderProductQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetOrderProductQuery, GetOrderProductQueryVariables>({ query: GetOrderProductDocument, ...options });
 };
 export const GetProductsSlugCategoryDocument = gql`
     query getProductsSlugCategory($slug: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
