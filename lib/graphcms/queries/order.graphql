@@ -11,7 +11,7 @@ mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
 
 query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
 	product(where: { id: $pid }, stage: $stage) {
-		id
+		productId: id
 		image {
 			url(
 				transformation: {

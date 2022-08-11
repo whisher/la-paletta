@@ -7000,7 +7000,7 @@ export type GetOrderProductQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: string, name: string, price: number, image: { __typename?: 'Asset', url: string }, description: { __typename?: 'RichText', html: string } | null } | null, productVariantColor: { __typename?: 'ProductVariantColor', name: string } | null };
+export type GetOrderProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', name: string, price: number, productId: string, image: { __typename?: 'Asset', url: string } } | null, productVariantColor: { __typename?: 'ProductVariantColor', name: string } | null };
 
 export type GetProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -7070,14 +7070,11 @@ export const CreateOrderItemsMutation = gql`
 export const GetOrderProduct = gql`
     query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
   product(where: {id: $pid}, stage: $stage) {
-    id
+    productId: id
     image {
       url(
         transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
       )
-    }
-    description {
-      html
     }
     name
     price
@@ -7218,14 +7215,11 @@ export function useCreateOrderItemsMutationMutation() {
 export const GetOrderProductDocument = gql`
     query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage = PUBLISHED) {
   product(where: {id: $pid}, stage: $stage) {
-    id
+    productId: id
     image {
       url(
         transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
       )
-    }
-    description {
-      html
     }
     name
     price

@@ -1,15 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import Stripe from 'stripe';
 
+import stripe from '../../../lib/util/stripe-client';
 import type { FieldValues } from 'react-hook-form';
 import type { ItemDto } from '@/hooks/cart';
 import { SHIPPING_FEES } from '../../../lib/costants';
 import { GetOrderProductDocument } from '@/graphcms/generated/graphql';
 import { client } from '../../../lib/graphcms/client';
-
-const stripe = new Stripe(String(process.env.STRIPE_SECRET_KEY), {
-	apiVersion: '2022-08-01'
-});
 
 interface ExtendedNextApiRequest extends NextApiRequest {
 	body: {
@@ -26,7 +22,6 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
 		const result = await client.query(GetOrderProductDocument, { pid, cid }).toPromise();
 		const {
 			product: {
-				description: { html },
 				image: { url },
 				name,
 				price,
