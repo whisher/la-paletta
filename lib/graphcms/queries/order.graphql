@@ -3,6 +3,19 @@ mutation createOrderMutation($order: OrderCreateInput!) {
 		id
 	}
 }
+
+mutation publishOrderMutation($id: ID!) {
+	publishOrder(where: { id: $id }, to: PUBLISHED) {
+		id
+	}
+}
+
+mutation publishOrderItemMutation($id: ID!) {
+	publishOrder(where: { id: $id }, to: PUBLISHED) {
+		id
+	}
+}
+
 mutation createOrderItemsMutation($ordeItems: OrderItemCreateInput!) {
 	orderItems: createOrderItem(data: $ordeItems) {
 		id
@@ -25,5 +38,28 @@ query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage
 	}
 	productVariantColor(where: { id: $cid }) {
 		name
+	}
+}
+
+query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
+	orders(first: 1, stage: DRAFT, where: { stripeCheckoutId: $id }) {
+		id
+		orderItems {
+			id
+			product {
+				image {
+					url(
+						transformation: {
+							image: { resize: { width: $imageWidth, fit: clip } }
+							document: { output: { format: webp } }
+						}
+					)
+				}
+				name
+			}
+			quantity
+			total
+		}
+		total
 	}
 }
