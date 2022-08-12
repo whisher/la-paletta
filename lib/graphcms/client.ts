@@ -1,5 +1,4 @@
 import { createClient, OperationContext } from 'urql';
-//import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import type { DocumentNode } from 'graphql';
 
 const client = createClient({

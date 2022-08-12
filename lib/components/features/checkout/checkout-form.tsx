@@ -1,9 +1,13 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, FieldValues } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { CheckoutError } from './checkout-error';
-const CheckoutForm: React.FC = () => {
+
+export interface CheckoutFormProps {
+	handleSubmitForm: (data: FieldValues) => void;
+}
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ handleSubmitForm }) => {
 	const {
 		register,
 		handleSubmit,
@@ -11,8 +15,9 @@ const CheckoutForm: React.FC = () => {
 	} = useForm();
 
 	const onSubmit = handleSubmit((data) => {
-		console.log(data);
+		handleSubmitForm(data);
 	});
+
 	const isValidMail = (error: 'required' | 'pattern') => {
 		const label = errors.email && errors.email.type;
 		return String(label) === error;
