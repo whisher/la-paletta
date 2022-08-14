@@ -2,6 +2,9 @@ import type { NextPage } from 'next';
 
 import { useRouter } from 'next/router';
 import { useGetDoneOrderProductQuery } from '@/graphcms/generated/graphql';
+import { Alert } from '@/components/ui/alert';
+import { Loader } from '@/components/ui/loader';
+
 const StripeSuccessPage: NextPage = () => {
 	const router = useRouter();
 	const [result] = useGetDoneOrderProductQuery({
@@ -9,8 +12,12 @@ const StripeSuccessPage: NextPage = () => {
 	});
 	const { data, fetching, error } = result;
 
-	if (fetching) return <p>Loading...</p>;
-	if (error) return <p>Oh no... {error.message}</p>;
+	if (fetching) {
+		return <Loader />;
+	}
+	if (error) {
+		return <Alert />;
+	}
 	console.log('result', result);
 
 	return <h1>PIPPO</h1>;

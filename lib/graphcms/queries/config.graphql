@@ -1,0 +1,6 @@
+query getConfig($stage: Stage = PUBLISHED) {
+	configs(first: 1) {
+		id
+		shippingfees
+	}
+}

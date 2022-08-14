@@ -27,14 +27,15 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
 				price,
 				...product
 			},
-			productVariantColor: { name: colorName }
+			productVariantColor: { name: colorName, colorId }
 		} = result.data;
 		return {
 			currency: 'EUR',
 			product_data: {
 				description: `${name} - Colore: ${colorName}`,
 				metadata: {
-					...product
+					...product,
+					colorId
 				},
 				name,
 				images: [url]

@@ -27,9 +27,15 @@ const createOrder = async (sessionId: string) => {
 			create: line_items!.data.map((item) => ({
 				quantity: item.quantity,
 				total: item.amount_total,
+
 				product: {
 					connect: {
 						id: (item.price?.product as Stripe.Product).metadata.productId
+					}
+				},
+				productVariantColor: {
+					connect: {
+						id: (item.price?.product as Stripe.Product).metadata.colorId
 					}
 				}
 			}))
@@ -41,14 +47,7 @@ const createOrder = async (sessionId: string) => {
 			order
 		})
 		.toPromise();
-	/*const id = result.data.order.id;
-	const result2 = await client
-		.mutation(PublishOrderMutationDocument, {
-			id
-		})
-		.toPromise();
-	console.log('Result', result.data.order.id);
-	console.log('Result', result2);*/
+
 	console.log('Result', result.data.order.id);
 };
 

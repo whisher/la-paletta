@@ -37,6 +37,7 @@ query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage
 		price
 	}
 	productVariantColor(where: { id: $cid }) {
+		colorId: id
 		name
 	}
 }

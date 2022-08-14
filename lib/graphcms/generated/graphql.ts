@@ -3157,6 +3157,7 @@ export type OrderItem = Node & {
   id: Scalars['ID'];
   order: Maybe<Order>;
   product: Maybe<Product>;
+  productVariantColor: Maybe<ProductVariantColor>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -3202,6 +3203,11 @@ export type OrderItemProductArgs = {
 };
 
 
+export type OrderItemProductVariantColorArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
 export type OrderItemPublishedByArgs = {
   locales: InputMaybe<Array<Locale>>;
 };
@@ -3243,6 +3249,7 @@ export type OrderItemCreateInput = {
   createdAt: InputMaybe<Scalars['DateTime']>;
   order: InputMaybe<OrderCreateOneInlineInput>;
   product: InputMaybe<ProductCreateOneInlineInput>;
+  productVariantColor: InputMaybe<ProductVariantColorCreateOneInlineInput>;
   quantity: Scalars['Int'];
   total: Scalars['Int'];
   updatedAt: InputMaybe<Scalars['DateTime']>;
@@ -3318,6 +3325,7 @@ export type OrderItemManyWhereInput = {
   id_starts_with: InputMaybe<Scalars['ID']>;
   order: InputMaybe<OrderWhereInput>;
   product: InputMaybe<ProductWhereInput>;
+  productVariantColor: InputMaybe<ProductVariantColorWhereInput>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt: InputMaybe<Scalars['DateTime']>;
@@ -3403,6 +3411,7 @@ export enum OrderItemOrderByInput {
 export type OrderItemUpdateInput = {
   order: InputMaybe<OrderUpdateOneInlineInput>;
   product: InputMaybe<ProductUpdateOneInlineInput>;
+  productVariantColor: InputMaybe<ProductVariantColorUpdateOneInlineInput>;
   quantity: InputMaybe<Scalars['Int']>;
   total: InputMaybe<Scalars['Int']>;
 };
@@ -3519,6 +3528,7 @@ export type OrderItemWhereInput = {
   id_starts_with: InputMaybe<Scalars['ID']>;
   order: InputMaybe<OrderWhereInput>;
   product: InputMaybe<ProductWhereInput>;
+  productVariantColor: InputMaybe<ProductVariantColorWhereInput>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt: InputMaybe<Scalars['DateTime']>;
@@ -4405,6 +4415,7 @@ export type ProductVariantColor = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   name: Scalars['String'];
+  orderItems: Array<OrderItem>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -4435,6 +4446,18 @@ export type ProductVariantColorHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride: InputMaybe<Stage>;
+};
+
+
+export type ProductVariantColorOrderItemsArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  orderBy: InputMaybe<OrderItemOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderItemWhereInput>;
 };
 
 
@@ -4481,6 +4504,7 @@ export type ProductVariantColorCreateInput = {
   createdAt: InputMaybe<Scalars['DateTime']>;
   hex: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
+  orderItems: InputMaybe<OrderItemCreateManyInlineInput>;
   updatedAt: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4597,6 +4621,9 @@ export type ProductVariantColorManyWhereInput = {
   name_not_starts_with: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with: InputMaybe<Scalars['String']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt: InputMaybe<Scalars['DateTime']>;
@@ -4656,6 +4683,7 @@ export type ProductVariantColorUpdateInput = {
   color: InputMaybe<ProductColor>;
   hex: InputMaybe<Scalars['String']>;
   name: InputMaybe<Scalars['String']>;
+  orderItems: InputMaybe<OrderItemUpdateManyInlineInput>;
 };
 
 export type ProductVariantColorUpdateManyInlineInput = {
@@ -4814,6 +4842,9 @@ export type ProductVariantColorWhereInput = {
   name_not_starts_with: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with: InputMaybe<Scalars['String']>;
+  orderItems_every: InputMaybe<OrderItemWhereInput>;
+  orderItems_none: InputMaybe<OrderItemWhereInput>;
+  orderItems_some: InputMaybe<OrderItemWhereInput>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt: InputMaybe<Scalars['DateTime']>;
@@ -6978,6 +7009,13 @@ export type GetCategoriesSlugQueryVariables = Exact<{
 
 export type GetCategoriesSlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string }> };
 
+export type GetConfigQueryVariables = Exact<{
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type GetConfigQuery = { __typename?: 'Query', configs: Array<{ __typename?: 'Config', id: string, shippingfees: number }> };
+
 export type CreateOrderMutationMutationVariables = Exact<{
   order: OrderCreateInput;
 }>;
@@ -7014,7 +7052,7 @@ export type GetOrderProductQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', name: string, price: number, productId: string, image: { __typename?: 'Asset', url: string } } | null, productVariantColor: { __typename?: 'ProductVariantColor', name: string } | null };
+export type GetOrderProductQuery = { __typename?: 'Query', product: { __typename?: 'Product', name: string, price: number, productId: string, image: { __typename?: 'Asset', url: string } } | null, productVariantColor: { __typename?: 'ProductVariantColor', name: string, colorId: string } | null };
 
 export type GetDoneOrderProductQueryVariables = Exact<{
   id: Scalars['String'];
@@ -7075,6 +7113,14 @@ export const GetCategoriesSlug = gql`
   }
 }
     `;
+export const GetConfig = gql`
+    query getConfig($stage: Stage = PUBLISHED) {
+  configs(first: 1) {
+    id
+    shippingfees
+  }
+}
+    `;
 export const CreateOrderMutation = gql`
     mutation createOrderMutation($order: OrderCreateInput!) {
   order: createOrder(data: $order) {
@@ -7116,6 +7162,7 @@ export const GetOrderProduct = gql`
     price
   }
   productVariantColor(where: {id: $cid}) {
+    colorId: id
     name
   }
 }
@@ -7247,6 +7294,18 @@ export const GetCategoriesSlugDocument = gql`
 export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCategoriesSlugQueryVariables>, 'query'>) {
   return Urql.useQuery<GetCategoriesSlugQuery, GetCategoriesSlugQueryVariables>({ query: GetCategoriesSlugDocument, ...options });
 };
+export const GetConfigDocument = gql`
+    query getConfig($stage: Stage = PUBLISHED) {
+  configs(first: 1) {
+    id
+    shippingfees
+  }
+}
+    `;
+
+export function useGetConfigQuery(options?: Omit<Urql.UseQueryArgs<GetConfigQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetConfigQuery, GetConfigQueryVariables>({ query: GetConfigDocument, ...options });
+};
 export const CreateOrderMutationDocument = gql`
     mutation createOrderMutation($order: OrderCreateInput!) {
   order: createOrder(data: $order) {
@@ -7304,6 +7363,7 @@ export const GetOrderProductDocument = gql`
     price
   }
   productVariantColor(where: {id: $cid}) {
+    colorId: id
     name
   }
 }
@@ -14917,6 +14977,29 @@ export default {
             ]
           },
           {
+            "name": "productVariantColor",
+            "type": {
+              "kind": "OBJECT",
+              "name": "ProductVariantColor",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "publishedAt",
             "type": {
               "kind": "SCALAR",
@@ -16102,6 +16185,87 @@ export default {
               }
             },
             "args": []
+          },
+          {
+            "name": "orderItems",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "OrderItem",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
           },
           {
             "name": "publishedAt",
