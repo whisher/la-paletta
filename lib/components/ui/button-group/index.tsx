@@ -25,7 +25,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ current, labels, handleClick 
 								'border-r': length < 3,
 								'border-r border-y rounded-r-lg': i + 1 === length,
 								border: !(i === 0) && !(i + 1 === length),
-								underline: active === i
+								'font-bold': active === i
 							})}
 						>
 							{label}

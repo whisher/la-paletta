@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useGetDoneOrderProductQuery } from '@/graphcms/generated/graphql';
 import { Alert } from '@/components/ui/alert';
 import { Loader } from '@/components/ui/loader';
+import { StripeSuccess } from '@/components/features/stripe/success';
 
 const StripeSuccessPage: NextPage = () => {
 	const router = useRouter();
@@ -18,9 +19,8 @@ const StripeSuccessPage: NextPage = () => {
 	if (error) {
 		return <Alert />;
 	}
-	console.log('result', result);
 
-	return <h1>PIPPO</h1>;
+	return data ? <StripeSuccess data={data.orders[0]} /> : null;
 };
 
 export default StripeSuccessPage;

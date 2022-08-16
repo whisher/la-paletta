@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 export interface LoaderProps {}

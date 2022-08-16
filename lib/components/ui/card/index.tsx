@@ -4,16 +4,19 @@ import Link from 'next/link';
 
 import { routes, PRODUCT_GRID_WIDTH } from '../../../costants';
 import { formatPrice } from '../../../util/format-price';
-import { GetProductsSlugCategoryQuery } from '@/graphcms/generated/graphql';
+import { GetProductsSlugCategoryQuery, GetSearchQuery } from '@/graphcms/generated/graphql';
+
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 import { ProductVariantColors } from '@/components/ui/product-variant-colors';
 
-export interface ProductsCardProps {
-	data: NonNullable<GetProductsSlugCategoryQuery['category']>['products'][0];
+export interface CardProps {
+	data:
+		| NonNullable<GetProductsSlugCategoryQuery['category']>['products'][0]
+		| NonNullable<GetSearchQuery>['products'][0];
 }
 
-const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
+const Card: React.FC<CardProps> = ({ data }) => {
 	const { product } = routes;
 	const { image, name, price, slug, productVariantColors } = data;
 	const href = `${product}/${slug}`;
@@ -39,5 +42,5 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ data }) => {
 		</Link>
 	);
 };
-const MemoizedProductsCard = React.memo(ProductsCard);
-export { MemoizedProductsCard };
+const MemoizedCard = React.memo(Card);
+export { MemoizedCard };

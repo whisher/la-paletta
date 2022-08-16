@@ -4,7 +4,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { ItemDto, useCartStore } from '@/hooks/cart';
 import { CartBottom } from './cart-bottom';
 import { CartIcon } from './cart-icon';
-import { CartGridCard } from './cart-grid';
+import { CartGrid } from './cart-grid';
 import { CartNoData } from './cart-no-data';
 const Cart: React.FC = () => {
 	const { getTotal, getTotalItems, items, open, removeItem, toggle } = useCartStore();
@@ -45,7 +45,7 @@ const Cart: React.FC = () => {
 						</h2>
 						<div className="no-scroll mt-4 h-4/6 overflow-y-auto">
 							{hasItems ? (
-								<CartGridCard data={items} handlerDeleteItem={handlerDeleteItem} />
+								<CartGrid data={items} handlerDeleteItem={handlerDeleteItem} />
 							) : (
 								<CartNoData toggle={toggle} />
 							)}

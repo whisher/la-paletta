@@ -7060,7 +7060,7 @@ export type GetDoneOrderProductQueryVariables = Exact<{
 }>;
 
 
-export type GetDoneOrderProductQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', id: string, total: number, orderItems: Array<{ __typename?: 'OrderItem', id: string, quantity: number, total: number, product: { __typename?: 'Product', name: string, image: { __typename?: 'Asset', url: string } } | null }> }> };
+export type GetDoneOrderProductQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', id: string, total: number, orderItems: Array<{ __typename?: 'OrderItem', id: string, quantity: number, total: number, product: { __typename?: 'Product', name: string, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null } } | null, productVariantColor: { __typename?: 'ProductVariantColor', id: string, name: string, hex: string | null } | null }> }> };
 
 export type GetProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -7095,6 +7095,15 @@ export type GetProductSlugQueryVariables = Exact<{
 
 export type GetProductSlugQuery = { __typename?: 'Query', product: { __typename?: 'Product', id: string, name: string, price: number, slug: string | null, categories: Array<{ __typename?: 'Category', name: string, slug: string }>, description: { __typename?: 'RichText', html: string } | null, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null, thumbnail: string }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', id: string, name: string, hex: string | null, color: ProductColor }> } | null };
 
+export type GetSearchQueryVariables = Exact<{
+  search: Scalars['String'];
+  imageWidth?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type GetSearchQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, price: number, slug: string | null, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null }, productVariantColors: Array<{ __typename?: 'ProductVariantColor', name: string, hex: string | null, color: ProductColor }> }> };
+
 
 export const GetCategories = gql`
     query getCategories($stage: Stage = PUBLISHED) {
@@ -7115,7 +7124,7 @@ export const GetCategoriesSlug = gql`
     `;
 export const GetConfig = gql`
     query getConfig($stage: Stage = PUBLISHED) {
-  configs(first: 1) {
+  configs(first: 1, stage: $stage) {
     id
     shippingfees
   }
@@ -7173,16 +7182,24 @@ export const GetDoneOrderProduct = gql`
     id
     orderItems {
       id
+      quantity
+      total
       product {
         image {
+          width
+          height
           url(
             transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
           )
+          altText
         }
         name
       }
-      quantity
-      total
+      productVariantColor {
+        id
+        name
+        hex
+      }
     }
     total
   }
@@ -7268,6 +7285,29 @@ export const GetProductSlug = gql`
   }
 }
     `;
+export const GetSearch = gql`
+    query getSearch($search: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
+  products(where: {name_contains: $search}, orderBy: price_ASC, stage: $stage) {
+    id
+    image {
+      width
+      height
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+      altText
+    }
+    name
+    price
+    productVariantColors {
+      name
+      hex
+      color
+    }
+    slug
+  }
+}
+    `;
 
 export const GetCategoriesDocument = gql`
     query getCategories($stage: Stage = PUBLISHED) {
@@ -7296,7 +7336,7 @@ export function useGetCategoriesSlugQuery(options?: Omit<Urql.UseQueryArgs<GetCa
 };
 export const GetConfigDocument = gql`
     query getConfig($stage: Stage = PUBLISHED) {
-  configs(first: 1) {
+  configs(first: 1, stage: $stage) {
     id
     shippingfees
   }
@@ -7378,16 +7418,24 @@ export const GetDoneOrderProductDocument = gql`
     id
     orderItems {
       id
+      quantity
+      total
       product {
         image {
+          width
+          height
           url(
             transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
           )
+          altText
         }
         name
       }
-      quantity
-      total
+      productVariantColor {
+        id
+        name
+        hex
+      }
     }
     total
   }
@@ -7492,6 +7540,33 @@ export const GetProductSlugDocument = gql`
 
 export function useGetProductSlugQuery(options: Omit<Urql.UseQueryArgs<GetProductSlugQueryVariables>, 'query'>) {
   return Urql.useQuery<GetProductSlugQuery, GetProductSlugQueryVariables>({ query: GetProductSlugDocument, ...options });
+};
+export const GetSearchDocument = gql`
+    query getSearch($search: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
+  products(where: {name_contains: $search}, orderBy: price_ASC, stage: $stage) {
+    id
+    image {
+      width
+      height
+      url(
+        transformation: {image: {resize: {width: $imageWidth, fit: clip}}, document: {output: {format: webp}}}
+      )
+      altText
+    }
+    name
+    price
+    productVariantColors {
+      name
+      hex
+      color
+    }
+    slug
+  }
+}
+    `;
+
+export function useGetSearchQuery(options: Omit<Urql.UseQueryArgs<GetSearchQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetSearchQuery, GetSearchQueryVariables>({ query: GetSearchDocument, ...options });
 };
 import { IntrospectionQuery } from 'graphql';
 export default {

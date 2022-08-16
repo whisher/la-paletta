@@ -1,0 +1,24 @@
+query getSearch($search: String!, $imageWidth: Int = 300, $stage: Stage = PUBLISHED) {
+	products(where: { name_contains: $search }, orderBy: price_ASC, stage: $stage) {
+		id
+		image {
+			width
+			height
+			url(
+				transformation: {
+					image: { resize: { width: $imageWidth, fit: clip } }
+					document: { output: { format: webp } }
+				}
+			)
+			altText
+		}
+		name
+		price
+		productVariantColors {
+			name
+			hex
+			color
+		}
+		slug
+	}
+}

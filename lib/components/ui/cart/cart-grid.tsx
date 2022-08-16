@@ -7,7 +7,7 @@ export interface CartGridProps {
 	handlerDeleteItem: (data: ItemDto) => void;
 }
 
-const CartGridCard: React.FC<CartGridProps> = ({ data, handlerDeleteItem }) => {
+const CartGrid: React.FC<CartGridProps> = ({ data, handlerDeleteItem }) => {
 	return (
 		<>
 			{data.map((item) => (
@@ -19,4 +19,4 @@ const CartGridCard: React.FC<CartGridProps> = ({ data, handlerDeleteItem }) => {
 	);
 };
 
-export { CartGridCard };
+export { CartGrid };

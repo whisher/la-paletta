@@ -1,5 +1,5 @@
 query getConfig($stage: Stage = PUBLISHED) {
-	configs(first: 1) {
+	configs(first: 1, stage: $stage) {
 		id
 		shippingfees
 	}

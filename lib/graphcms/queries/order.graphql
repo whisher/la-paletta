@@ -47,19 +47,27 @@ query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
 		id
 		orderItems {
 			id
+			quantity
+			total
 			product {
 				image {
+					width
+					height
 					url(
 						transformation: {
 							image: { resize: { width: $imageWidth, fit: clip } }
 							document: { output: { format: webp } }
 						}
 					)
+					altText
 				}
 				name
 			}
-			quantity
-			total
+			productVariantColor {
+				id
+				name
+				hex
+			}
 		}
 		total
 	}

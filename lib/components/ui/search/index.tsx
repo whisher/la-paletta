@@ -1,28 +1,42 @@
 import React, { useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
+
+import { AiOutlineLoading3Quarters, AiOutlineSearch } from 'react-icons/ai';
 
 const Search: React.FC = () => {
+	const router = useRouter();
+	const { register, handleSubmit } = useForm();
+
+	const onSubmit = handleSubmit((data) => {
+		if (data.search) {
+			router.push({ pathname: '/search', query: { name_contains: data.search } });
+		}
+	});
 	const [isVisible, setIsVisible] = useState(false);
+
 	const toggleIsVisible = () => {
 		setIsVisible((isVisible) => !isVisible);
 	};
 	return (
 		<form
+			onSubmit={onSubmit}
 			className={`relative flex items-center rounded-full h-full  ${
 				isVisible ? 'bg-white border-2 border-white' : 'bg-inherit'
 			}`}
+			noValidate
 		>
 			<input
-				type="text"
 				className={`border-0 bg-white rounded-full outline-0 text-lg py-1.5 px-3 transition origin-top-right caret-black ${
 					isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'
 				}`}
-				name="search"
 				placeholder="Ricerca"
 				aria-label="ricerca"
+				type="text"
+				{...register('search', { required: true })}
 			/>
 			<button
-				type="button"
+				type="submit"
 				onClick={toggleIsVisible}
 				className={`absolute right-0 p-1 bg-white rounded-full ${
 					isVisible ? 'border-0' : 'border-2 border-white'

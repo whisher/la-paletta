@@ -1,1 +1,1 @@
-export { Main } from './main';
+export { Main as Layout } from './main';
