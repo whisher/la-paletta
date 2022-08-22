@@ -32,7 +32,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
 							<Button>Scegli</Button>
 						</div>
 					</div>
-					<h2 className="w-full relative z-50 h-12 bg-white text-center text-lg font-bold truncate">
+					<h2 className="w-full relative z-40 h-12 bg-white text-center text-lg font-bold truncate">
 						{name}
 					</h2>
 					<h3 className="text-center text-3xl  text-gray-400">{formatPrice(price)}</h3>

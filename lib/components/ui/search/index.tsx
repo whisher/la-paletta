@@ -27,14 +27,14 @@ const Search: React.FC = () => {
 			noValidate
 		>
 			<input
-				className={`border-0 bg-white rounded-full outline-0 text-lg py-1.5 px-3 transition origin-top-right caret-black ${
+				className={`outline-0 border-0 bg-white rounded-full text-lg py-1.5 px-3 transition origin-top-right caret-black ${
 					isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'
 				}`}
 				placeholder="Ricerca"
-				aria-label="ricerca"
-				type="text"
+				type="search"
 				{...register('search', { required: true })}
 			/>
+
 			<button
 				type="submit"
 				onClick={toggleIsVisible}

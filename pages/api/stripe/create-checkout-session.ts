@@ -10,14 +10,13 @@ import { client } from '../../../lib/graphcms/client';
 interface ExtendedNextApiRequest extends NextApiRequest {
 	body: {
 		items: ItemDto[];
-		user: FieldValues;
+		user: { id: string; email: string };
 		cancel_url: string;
 		success_url: string;
 	};
 }
 const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { items, user, cancel_url, success_url } = req.body;
-
 	const getOrderProduct = async (pid: string, cid: string) => {
 		const result = await client.query(GetOrderProductDocument, { pid, cid }).toPromise();
 		const {
@@ -63,8 +62,8 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
 			payment_method_types: ['card'],
 			cancel_url,
 			customer_email: user.email,
+			client_reference_id: user.id,
 			success_url: `${success_url}?id={CHECKOUT_SESSION_ID}`,
-			billing_address_collection: 'required',
 			shipping_options: [
 				{
 					shipping_rate_data: {

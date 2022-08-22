@@ -6,8 +6,9 @@ import { Loader } from '@/components/ui/loader';
 import { Search } from '@/components/features/search';
 const SearchPage: NextPage = () => {
 	const router = useRouter();
+	const search = String(router.query.name_contains);
 	const [result] = useGetSearchQuery({
-		variables: { search: String(router.query.name_contains) }
+		variables: { search }
 	});
 	const { data, fetching, error } = result;
 
@@ -18,7 +19,7 @@ const SearchPage: NextPage = () => {
 		return <Alert />;
 	}
 	console.log(data);
-	return data ? <Search data={data.products} /> : null;
+	return data ? <Search data={data.products} query={search} /> : null;
 };
 
 export default SearchPage;

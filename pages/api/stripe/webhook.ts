@@ -19,15 +19,20 @@ const createOrder = async (sessionId: string) => {
 	const { customer, line_items, ...session } = await stripe.checkout.sessions.retrieve(sessionId, {
 		expand: ['line_items.data.price.product', 'customer']
 	});
+	console.log(customer, line_items, session);
+
 	const order = {
-		email: session.customer_email,
+		customer: {
+			connect: {
+				id: session.client_reference_id
+			}
+		},
 		total: session.amount_total,
 		stripeCheckoutId: session.id,
 		orderItems: {
 			create: line_items!.data.map((item) => ({
 				quantity: item.quantity,
 				total: item.amount_total,
-
 				product: {
 					connect: {
 						id: (item.price?.product as Stripe.Product).metadata.productId
@@ -48,7 +53,7 @@ const createOrder = async (sessionId: string) => {
 		})
 		.toPromise();
 
-	console.log('Result', result.data.order.id);
+	console.log('Result', result);
 };
 
 const webhook = async (req: NextApiRequest, res: NextApiResponse, event: any) => {

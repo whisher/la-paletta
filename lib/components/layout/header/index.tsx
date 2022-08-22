@@ -3,10 +3,14 @@ import classNames from 'classnames';
 import { Brand } from '../brand';
 import { Nav } from '../nav';
 
-import { Search } from '@/components/ui/search';
 import { Cart } from '@/components/ui/cart';
+import { Search } from '@/components/ui/search';
+import { Theme } from '@/components/ui/theme';
 
-const Header: React.FC = () => {
+export interface HeaderProps {
+	toggleTheme: () => void;
+}
+const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	useEffect(() => {
 		const onScroll = () => {
@@ -17,8 +21,8 @@ const Header: React.FC = () => {
 		return () => window.removeEventListener('scroll', onScroll);
 	}, []);
 	const classes = classNames(
-		`sticky top-0 z-50 h-20 origin-top flex justify-between items-center px-8 transition duration-500`,
-		{ 'bg-brand-300': isScrolled, 'bg-brand-300/80': !isScrolled }
+		`sticky top-0 z-50 origin-top h-20 flex justify-between items-center px-8 bg-brand-300 transition duration-500`,
+		{ 'border-b-8 border-white/50': isScrolled, 'border-b-8 border-brand-300': !isScrolled }
 	);
 	return (
 		<header className={classes}>
@@ -26,6 +30,9 @@ const Header: React.FC = () => {
 
 			<Nav />
 			<ul className="flex justify-between items-center gap-x-4">
+				<li>
+					<Theme toggleTheme={toggleTheme} />
+				</li>
 				<li>
 					<Search />
 				</li>

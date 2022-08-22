@@ -1699,6 +1699,691 @@ export type ConnectPositionInput = {
   start: InputMaybe<Scalars['Boolean']>;
 };
 
+export type Customer = Node & {
+  __typename?: 'Customer';
+  address: Maybe<Scalars['String']>;
+  city: Maybe<Scalars['String']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<User>;
+  district: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<Customer>;
+  email: Scalars['String'];
+  firstname: Maybe<Scalars['String']>;
+  /** List of Customer versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  lastname: Maybe<Scalars['String']>;
+  orders: Array<Order>;
+  pcode: Maybe<Scalars['String']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<User>;
+};
+
+
+export type CustomerCreatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type CustomerDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type CustomerHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: InputMaybe<Stage>;
+};
+
+
+export type CustomerOrdersArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  orderBy: InputMaybe<OrderOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<OrderWhereInput>;
+};
+
+
+export type CustomerPublishedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type CustomerScheduledInArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales: InputMaybe<Array<Locale>>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type CustomerUpdatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+export type CustomerConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CustomerWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type CustomerConnection = {
+  __typename?: 'CustomerConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<CustomerEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type CustomerCreateInput = {
+  address: InputMaybe<Scalars['String']>;
+  city: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  district: InputMaybe<Scalars['String']>;
+  email: Scalars['String'];
+  firstname: InputMaybe<Scalars['String']>;
+  lastname: InputMaybe<Scalars['String']>;
+  orders: InputMaybe<OrderCreateManyInlineInput>;
+  pcode: InputMaybe<Scalars['String']>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+};
+
+export type CustomerCreateManyInlineInput = {
+  /** Connect multiple existing Customer documents */
+  connect: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  /** Create and connect multiple existing Customer documents */
+  create: InputMaybe<Array<CustomerCreateInput>>;
+};
+
+export type CustomerCreateOneInlineInput = {
+  /** Connect one existing Customer document */
+  connect: InputMaybe<CustomerWhereUniqueInput>;
+  /** Create and connect one Customer document */
+  create: InputMaybe<CustomerCreateInput>;
+};
+
+/** An edge in a connection. */
+export type CustomerEdge = {
+  __typename?: 'CustomerEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Customer;
+};
+
+/** Identifies documents */
+export type CustomerManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<CustomerWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<CustomerWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<CustomerWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  address: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  address_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  address_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  address_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  address_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  address_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  address_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  address_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  address_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  address_starts_with: InputMaybe<Scalars['String']>;
+  city: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  city_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  city_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  city_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  city_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  city_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  city_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  city_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  city_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  city_starts_with: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  district: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  district_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  district_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  district_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  district_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  district_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  district_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  district_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  district_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  district_starts_with: InputMaybe<Scalars['String']>;
+  email: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  email_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  email_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  email_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  email_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  email_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  email_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  email_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  email_starts_with: InputMaybe<Scalars['String']>;
+  firstname: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  firstname_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  firstname_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  firstname_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  firstname_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  firstname_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  firstname_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  firstname_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  firstname_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  firstname_starts_with: InputMaybe<Scalars['String']>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  lastname: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  lastname_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  lastname_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  lastname_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  lastname_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  lastname_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  lastname_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  lastname_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  lastname_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  lastname_starts_with: InputMaybe<Scalars['String']>;
+  orders_every: InputMaybe<OrderWhereInput>;
+  orders_none: InputMaybe<OrderWhereInput>;
+  orders_some: InputMaybe<OrderWhereInput>;
+  pcode: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  pcode_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  pcode_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  pcode_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  pcode_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  pcode_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  pcode_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  pcode_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  pcode_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  pcode_starts_with: InputMaybe<Scalars['String']>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+export enum CustomerOrderByInput {
+  AddressAsc = 'address_ASC',
+  AddressDesc = 'address_DESC',
+  CityAsc = 'city_ASC',
+  CityDesc = 'city_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DistrictAsc = 'district_ASC',
+  DistrictDesc = 'district_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  FirstnameAsc = 'firstname_ASC',
+  FirstnameDesc = 'firstname_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LastnameAsc = 'lastname_ASC',
+  LastnameDesc = 'lastname_DESC',
+  PcodeAsc = 'pcode_ASC',
+  PcodeDesc = 'pcode_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type CustomerUpdateInput = {
+  address: InputMaybe<Scalars['String']>;
+  city: InputMaybe<Scalars['String']>;
+  district: InputMaybe<Scalars['String']>;
+  email: InputMaybe<Scalars['String']>;
+  firstname: InputMaybe<Scalars['String']>;
+  lastname: InputMaybe<Scalars['String']>;
+  orders: InputMaybe<OrderUpdateManyInlineInput>;
+  pcode: InputMaybe<Scalars['String']>;
+};
+
+export type CustomerUpdateManyInlineInput = {
+  /** Connect multiple existing Customer documents */
+  connect: InputMaybe<Array<CustomerConnectInput>>;
+  /** Create and connect multiple Customer documents */
+  create: InputMaybe<Array<CustomerCreateInput>>;
+  /** Delete multiple Customer documents */
+  delete: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  /** Disconnect multiple Customer documents */
+  disconnect: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Customer documents */
+  set: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  /** Update multiple Customer documents */
+  update: InputMaybe<Array<CustomerUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Customer documents */
+  upsert: InputMaybe<Array<CustomerUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CustomerUpdateManyInput = {
+  address: InputMaybe<Scalars['String']>;
+  city: InputMaybe<Scalars['String']>;
+  district: InputMaybe<Scalars['String']>;
+  firstname: InputMaybe<Scalars['String']>;
+  lastname: InputMaybe<Scalars['String']>;
+  pcode: InputMaybe<Scalars['String']>;
+};
+
+export type CustomerUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CustomerUpdateManyInput;
+  /** Document search */
+  where: CustomerWhereInput;
+};
+
+export type CustomerUpdateOneInlineInput = {
+  /** Connect existing Customer document */
+  connect: InputMaybe<CustomerWhereUniqueInput>;
+  /** Create and connect one Customer document */
+  create: InputMaybe<CustomerCreateInput>;
+  /** Delete currently connected Customer document */
+  delete: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Customer document */
+  disconnect: InputMaybe<Scalars['Boolean']>;
+  /** Update single Customer document */
+  update: InputMaybe<CustomerUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Customer document */
+  upsert: InputMaybe<CustomerUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CustomerUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CustomerUpdateInput;
+  /** Unique document search */
+  where: CustomerWhereUniqueInput;
+};
+
+export type CustomerUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CustomerCreateInput;
+  /** Update document if it exists */
+  update: CustomerUpdateInput;
+};
+
+export type CustomerUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CustomerUpsertInput;
+  /** Unique document search */
+  where: CustomerWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type CustomerWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: InputMaybe<Array<CustomerWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: InputMaybe<Array<CustomerWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: InputMaybe<Array<CustomerWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: InputMaybe<Scalars['String']>;
+  address: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  address_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  address_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  address_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  address_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  address_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  address_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  address_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  address_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  address_starts_with: InputMaybe<Scalars['String']>;
+  city: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  city_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  city_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  city_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  city_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  city_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  city_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  city_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  city_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  city_starts_with: InputMaybe<Scalars['String']>;
+  createdAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy: InputMaybe<UserWhereInput>;
+  district: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  district_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  district_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  district_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  district_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  district_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  district_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  district_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  district_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  district_starts_with: InputMaybe<Scalars['String']>;
+  email: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  email_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  email_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  email_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  email_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  email_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  email_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  email_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  email_starts_with: InputMaybe<Scalars['String']>;
+  firstname: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  firstname_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  firstname_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  firstname_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  firstname_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  firstname_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  firstname_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  firstname_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  firstname_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  firstname_starts_with: InputMaybe<Scalars['String']>;
+  id: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: InputMaybe<Scalars['ID']>;
+  lastname: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  lastname_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  lastname_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  lastname_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  lastname_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  lastname_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  lastname_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  lastname_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  lastname_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  lastname_starts_with: InputMaybe<Scalars['String']>;
+  orders_every: InputMaybe<OrderWhereInput>;
+  orders_none: InputMaybe<OrderWhereInput>;
+  orders_some: InputMaybe<OrderWhereInput>;
+  pcode: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  pcode_contains: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  pcode_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  pcode_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  pcode_not: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  pcode_not_contains: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  pcode_not_ends_with: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  pcode_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  pcode_not_starts_with: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  pcode_starts_with: InputMaybe<Scalars['String']>;
+  publishedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy: InputMaybe<UserWhereInput>;
+  scheduledIn_every: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy: InputMaybe<UserWhereInput>;
+};
+
+/** References Customer record uniquely */
+export type CustomerWhereUniqueInput = {
+  email: InputMaybe<Scalars['String']>;
+  id: InputMaybe<Scalars['ID']>;
+};
+
 export enum DocumentFileTypes {
   Doc = 'doc',
   Docx = 'docx',
@@ -1826,6 +2511,8 @@ export type Mutation = {
   createCategory: Maybe<Category>;
   /** Create one config */
   createConfig: Maybe<Config>;
+  /** Create one customer */
+  createCustomer: Maybe<Customer>;
   /** Create one order */
   createOrder: Maybe<Order>;
   /** Create one orderItem */
@@ -1842,6 +2529,8 @@ export type Mutation = {
   deleteCategory: Maybe<Category>;
   /** Delete one config from _all_ existing stages. Returns deleted document. */
   deleteConfig: Maybe<Config>;
+  /** Delete one customer from _all_ existing stages. Returns deleted document. */
+  deleteCustomer: Maybe<Customer>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -1863,6 +2552,13 @@ export type Mutation = {
   deleteManyConfigs: BatchPayload;
   /** Delete many Config documents, return deleted documents */
   deleteManyConfigsConnection: ConfigConnection;
+  /**
+   * Delete many Customer documents
+   * @deprecated Please use the new paginated many mutation (deleteManyCustomersConnection)
+   */
+  deleteManyCustomers: BatchPayload;
+  /** Delete many Customer documents, return deleted documents */
+  deleteManyCustomersConnection: CustomerConnection;
   /**
    * Delete many OrderItem documents
    * @deprecated Please use the new paginated many mutation (deleteManyOrderItemsConnection)
@@ -1909,6 +2605,8 @@ export type Mutation = {
   publishCategory: Maybe<Category>;
   /** Publish one config */
   publishConfig: Maybe<Config>;
+  /** Publish one customer */
+  publishCustomer: Maybe<Customer>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -1930,6 +2628,13 @@ export type Mutation = {
   publishManyConfigs: BatchPayload;
   /** Publish many Config documents */
   publishManyConfigsConnection: ConfigConnection;
+  /**
+   * Publish many Customer documents
+   * @deprecated Please use the new paginated many mutation (publishManyCustomersConnection)
+   */
+  publishManyCustomers: BatchPayload;
+  /** Publish many Customer documents */
+  publishManyCustomersConnection: CustomerConnection;
   /**
    * Publish many OrderItem documents
    * @deprecated Please use the new paginated many mutation (publishManyOrderItemsConnection)
@@ -1972,6 +2677,8 @@ export type Mutation = {
   schedulePublishCategory: Maybe<Category>;
   /** Schedule to publish one config */
   schedulePublishConfig: Maybe<Config>;
+  /** Schedule to publish one customer */
+  schedulePublishCustomer: Maybe<Customer>;
   /** Schedule to publish one order */
   schedulePublishOrder: Maybe<Order>;
   /** Schedule to publish one orderItem */
@@ -1986,6 +2693,8 @@ export type Mutation = {
   scheduleUnpublishCategory: Maybe<Category>;
   /** Unpublish one config from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishConfig: Maybe<Config>;
+  /** Unpublish one customer from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishCustomer: Maybe<Customer>;
   /** Unpublish one order from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishOrder: Maybe<Order>;
   /** Unpublish one orderItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2000,6 +2709,8 @@ export type Mutation = {
   unpublishCategory: Maybe<Category>;
   /** Unpublish one config from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishConfig: Maybe<Config>;
+  /** Unpublish one customer from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishCustomer: Maybe<Customer>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -2021,6 +2732,13 @@ export type Mutation = {
   unpublishManyConfigs: BatchPayload;
   /** Find many Config documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyConfigsConnection: ConfigConnection;
+  /**
+   * Unpublish many Customer documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyCustomersConnection)
+   */
+  unpublishManyCustomers: BatchPayload;
+  /** Find many Customer documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyCustomersConnection: CustomerConnection;
   /**
    * Unpublish many OrderItem documents
    * @deprecated Please use the new paginated many mutation (unpublishManyOrderItemsConnection)
@@ -2063,6 +2781,8 @@ export type Mutation = {
   updateCategory: Maybe<Category>;
   /** Update one config */
   updateConfig: Maybe<Config>;
+  /** Update one customer */
+  updateCustomer: Maybe<Customer>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -2084,6 +2804,13 @@ export type Mutation = {
   updateManyConfigs: BatchPayload;
   /** Update many Config documents */
   updateManyConfigsConnection: ConfigConnection;
+  /**
+   * Update many customers
+   * @deprecated Please use the new paginated many mutation (updateManyCustomersConnection)
+   */
+  updateManyCustomers: BatchPayload;
+  /** Update many Customer documents */
+  updateManyCustomersConnection: CustomerConnection;
   /**
    * Update many orderItems
    * @deprecated Please use the new paginated many mutation (updateManyOrderItemsConnection)
@@ -2128,6 +2855,8 @@ export type Mutation = {
   upsertCategory: Maybe<Category>;
   /** Upsert one config */
   upsertConfig: Maybe<Config>;
+  /** Upsert one customer */
+  upsertCustomer: Maybe<Customer>;
   /** Upsert one order */
   upsertOrder: Maybe<Order>;
   /** Upsert one orderItem */
@@ -2151,6 +2880,11 @@ export type MutationCreateCategoryArgs = {
 
 export type MutationCreateConfigArgs = {
   data: ConfigCreateInput;
+};
+
+
+export type MutationCreateCustomerArgs = {
+  data: CustomerCreateInput;
 };
 
 
@@ -2191,6 +2925,11 @@ export type MutationDeleteCategoryArgs = {
 
 export type MutationDeleteConfigArgs = {
   where: ConfigWhereUniqueInput;
+};
+
+
+export type MutationDeleteCustomerArgs = {
+  where: CustomerWhereUniqueInput;
 };
 
 
@@ -2236,6 +2975,21 @@ export type MutationDeleteManyConfigsConnectionArgs = {
   last: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   where: InputMaybe<ConfigManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCustomersArgs = {
+  where: InputMaybe<CustomerManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCustomersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<CustomerManyWhereInput>;
 };
 
 
@@ -2350,6 +3104,12 @@ export type MutationPublishConfigArgs = {
 };
 
 
+export type MutationPublishCustomerArgs = {
+  to?: Array<Stage>;
+  where: CustomerWhereUniqueInput;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -2407,6 +3167,24 @@ export type MutationPublishManyConfigsConnectionArgs = {
   skip: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where: InputMaybe<ConfigManyWhereInput>;
+};
+
+
+export type MutationPublishManyCustomersArgs = {
+  to?: Array<Stage>;
+  where: InputMaybe<CustomerManyWhereInput>;
+};
+
+
+export type MutationPublishManyCustomersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where: InputMaybe<CustomerManyWhereInput>;
 };
 
 
@@ -2533,6 +3311,14 @@ export type MutationSchedulePublishConfigArgs = {
 };
 
 
+export type MutationSchedulePublishCustomerArgs = {
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: CustomerWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishOrderArgs = {
   releaseAt: InputMaybe<Scalars['DateTime']>;
   releaseId: InputMaybe<Scalars['String']>;
@@ -2591,6 +3377,14 @@ export type MutationScheduleUnpublishConfigArgs = {
 };
 
 
+export type MutationScheduleUnpublishCustomerArgs = {
+  from?: Array<Stage>;
+  releaseAt: InputMaybe<Scalars['DateTime']>;
+  releaseId: InputMaybe<Scalars['String']>;
+  where: CustomerWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishOrderArgs = {
   from?: Array<Stage>;
   releaseAt: InputMaybe<Scalars['DateTime']>;
@@ -2640,6 +3434,12 @@ export type MutationUnpublishCategoryArgs = {
 export type MutationUnpublishConfigArgs = {
   from?: Array<Stage>;
   where: ConfigWhereUniqueInput;
+};
+
+
+export type MutationUnpublishCustomerArgs = {
+  from?: Array<Stage>;
+  where: CustomerWhereUniqueInput;
 };
 
 
@@ -2698,6 +3498,24 @@ export type MutationUnpublishManyConfigsConnectionArgs = {
   skip: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where: InputMaybe<ConfigManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCustomersArgs = {
+  from?: Array<Stage>;
+  where: InputMaybe<CustomerManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCustomersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  first: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where: InputMaybe<CustomerManyWhereInput>;
 };
 
 
@@ -2815,6 +3633,12 @@ export type MutationUpdateConfigArgs = {
 };
 
 
+export type MutationUpdateCustomerArgs = {
+  data: CustomerUpdateInput;
+  where: CustomerWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where: InputMaybe<AssetManyWhereInput>;
@@ -2863,6 +3687,23 @@ export type MutationUpdateManyConfigsConnectionArgs = {
   last: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   where: InputMaybe<ConfigManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCustomersArgs = {
+  data: CustomerUpdateManyInput;
+  where: InputMaybe<CustomerManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCustomersConnectionArgs = {
+  after: InputMaybe<Scalars['ID']>;
+  before: InputMaybe<Scalars['ID']>;
+  data: CustomerUpdateManyInput;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  where: InputMaybe<CustomerManyWhereInput>;
 };
 
 
@@ -2982,6 +3823,12 @@ export type MutationUpsertConfigArgs = {
 };
 
 
+export type MutationUpsertCustomerArgs = {
+  upsert: CustomerUpsertInput;
+  where: CustomerWhereUniqueInput;
+};
+
+
 export type MutationUpsertOrderArgs = {
   upsert: OrderUpsertInput;
   where: OrderWhereUniqueInput;
@@ -3019,9 +3866,9 @@ export type Order = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy: Maybe<User>;
+  customer: Maybe<Customer>;
   /** Get the document in other stages */
   documentInStages: Array<Order>;
-  email: Scalars['String'];
   /** List of Order versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -3044,6 +3891,11 @@ export type Order = Node & {
 
 
 export type OrderCreatedByArgs = {
+  locales: InputMaybe<Array<Locale>>;
+};
+
+
+export type OrderCustomerArgs = {
   locales: InputMaybe<Array<Locale>>;
 };
 
@@ -3113,7 +3965,7 @@ export type OrderConnection = {
 
 export type OrderCreateInput = {
   createdAt: InputMaybe<Scalars['DateTime']>;
-  email: Scalars['String'];
+  customer: InputMaybe<CustomerCreateOneInlineInput>;
   orderItems: InputMaybe<OrderItemCreateManyInlineInput>;
   stripeCheckoutId: Scalars['String'];
   total: Scalars['Int'];
@@ -3627,25 +4479,7 @@ export type OrderManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy: InputMaybe<UserWhereInput>;
-  email: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  email_contains: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  email_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  email_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values that are not equal to given value. */
-  email_not: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  email_not_contains: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  email_not_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  email_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  email_not_starts_with: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  email_starts_with: InputMaybe<Scalars['String']>;
+  customer: InputMaybe<CustomerWhereInput>;
   id: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains: InputMaybe<Scalars['ID']>;
@@ -3742,8 +4576,6 @@ export type OrderManyWhereInput = {
 export enum OrderOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
-  EmailAsc = 'email_ASC',
-  EmailDesc = 'email_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
@@ -3757,7 +4589,7 @@ export enum OrderOrderByInput {
 }
 
 export type OrderUpdateInput = {
-  email: InputMaybe<Scalars['String']>;
+  customer: InputMaybe<CustomerUpdateOneInlineInput>;
   orderItems: InputMaybe<OrderItemUpdateManyInlineInput>;
   stripeCheckoutId: InputMaybe<Scalars['String']>;
   total: InputMaybe<Scalars['Int']>;
@@ -3781,7 +4613,6 @@ export type OrderUpdateManyInlineInput = {
 };
 
 export type OrderUpdateManyInput = {
-  email: InputMaybe<Scalars['String']>;
   stripeCheckoutId: InputMaybe<Scalars['String']>;
   total: InputMaybe<Scalars['Int']>;
 };
@@ -3855,25 +4686,7 @@ export type OrderWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy: InputMaybe<UserWhereInput>;
-  email: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  email_contains: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  email_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  email_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values that are not equal to given value. */
-  email_not: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  email_not_contains: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  email_not_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  email_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  email_not_starts_with: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  email_starts_with: InputMaybe<Scalars['String']>;
+  customer: InputMaybe<CustomerWhereInput>;
   id: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains: InputMaybe<Scalars['ID']>;
@@ -5072,6 +5885,14 @@ export type Query = {
   configs: Array<Config>;
   /** Retrieve multiple configs using the Relay connection interface */
   configsConnection: ConfigConnection;
+  /** Retrieve a single customer */
+  customer: Maybe<Customer>;
+  /** Retrieve document version */
+  customerVersion: Maybe<DocumentVersion>;
+  /** Retrieve multiple customers */
+  customers: Array<Customer>;
+  /** Retrieve multiple customers using the Relay connection interface */
+  customersConnection: CustomerConnection;
   /** Fetches an object given its ID */
   node: Maybe<Node>;
   /** Retrieve a single order */
@@ -5238,6 +6059,44 @@ export type QueryConfigsConnectionArgs = {
   skip: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where: InputMaybe<ConfigWhereInput>;
+};
+
+
+export type QueryCustomerArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: CustomerWhereUniqueInput;
+};
+
+
+export type QueryCustomerVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryCustomersArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<CustomerOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<CustomerWhereInput>;
+};
+
+
+export type QueryCustomersConnectionArgs = {
+  after: InputMaybe<Scalars['String']>;
+  before: InputMaybe<Scalars['String']>;
+  first: InputMaybe<Scalars['Int']>;
+  last: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy: InputMaybe<CustomerOrderByInput>;
+  skip: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where: InputMaybe<CustomerWhereInput>;
 };
 
 
@@ -5605,7 +6464,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Category | Config | Order | OrderItem | Product | ProductVariantColor;
+export type ScheduledOperationAffectedDocument = Asset | Category | Config | Customer | Order | OrderItem | Product | ProductVariantColor;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7016,6 +7875,29 @@ export type GetConfigQueryVariables = Exact<{
 
 export type GetConfigQuery = { __typename?: 'Query', configs: Array<{ __typename?: 'Config', id: string, shippingfees: number }> };
 
+export type GetCustomerQueryVariables = Exact<{
+  email: Scalars['String'];
+  stage?: InputMaybe<Stage>;
+}>;
+
+
+export type GetCustomerQuery = { __typename?: 'Query', customer: { __typename?: 'Customer', id: string } | null };
+
+export type CreateCustomerMutationMutationVariables = Exact<{
+  data: CustomerCreateInput;
+}>;
+
+
+export type CreateCustomerMutationMutation = { __typename?: 'Mutation', customer: { __typename?: 'Customer', id: string } | null };
+
+export type UpdateCustomerMutationMutationVariables = Exact<{
+  data: CustomerUpdateInput;
+  where: CustomerWhereUniqueInput;
+}>;
+
+
+export type UpdateCustomerMutationMutation = { __typename?: 'Mutation', customer: { __typename?: 'Customer', id: string } | null };
+
 export type CreateOrderMutationMutationVariables = Exact<{
   order: OrderCreateInput;
 }>;
@@ -7127,6 +8009,27 @@ export const GetConfig = gql`
   configs(first: 1, stage: $stage) {
     id
     shippingfees
+  }
+}
+    `;
+export const GetCustomer = gql`
+    query getCustomer($email: String!, $stage: Stage = PUBLISHED) {
+  customer(where: {email: $email}, stage: $stage) {
+    id
+  }
+}
+    `;
+export const CreateCustomerMutation = gql`
+    mutation createCustomerMutation($data: CustomerCreateInput!) {
+  customer: createCustomer(data: $data) {
+    id
+  }
+}
+    `;
+export const UpdateCustomerMutation = gql`
+    mutation updateCustomerMutation($data: CustomerUpdateInput!, $where: CustomerWhereUniqueInput!) {
+  customer: updateCustomer(data: $data, where: $where) {
+    id
   }
 }
     `;
@@ -7345,6 +8248,39 @@ export const GetConfigDocument = gql`
 
 export function useGetConfigQuery(options?: Omit<Urql.UseQueryArgs<GetConfigQueryVariables>, 'query'>) {
   return Urql.useQuery<GetConfigQuery, GetConfigQueryVariables>({ query: GetConfigDocument, ...options });
+};
+export const GetCustomerDocument = gql`
+    query getCustomer($email: String!, $stage: Stage = PUBLISHED) {
+  customer(where: {email: $email}, stage: $stage) {
+    id
+  }
+}
+    `;
+
+export function useGetCustomerQuery(options: Omit<Urql.UseQueryArgs<GetCustomerQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetCustomerQuery, GetCustomerQueryVariables>({ query: GetCustomerDocument, ...options });
+};
+export const CreateCustomerMutationDocument = gql`
+    mutation createCustomerMutation($data: CustomerCreateInput!) {
+  customer: createCustomer(data: $data) {
+    id
+  }
+}
+    `;
+
+export function useCreateCustomerMutationMutation() {
+  return Urql.useMutation<CreateCustomerMutationMutation, CreateCustomerMutationMutationVariables>(CreateCustomerMutationDocument);
+};
+export const UpdateCustomerMutationDocument = gql`
+    mutation updateCustomerMutation($data: CustomerUpdateInput!, $where: CustomerWhereUniqueInput!) {
+  customer: updateCustomer(data: $data, where: $where) {
+    id
+  }
+}
+    `;
+
+export function useUpdateCustomerMutationMutation() {
+  return Urql.useMutation<UpdateCustomerMutationMutation, UpdateCustomerMutationMutationVariables>(UpdateCustomerMutationDocument);
 };
 export const CreateOrderMutationDocument = gql`
     mutation createOrderMutation($order: OrderCreateInput!) {
@@ -9200,6 +10136,533 @@ export default {
       },
       {
         "kind": "OBJECT",
+        "name": "Customer",
+        "fields": [
+          {
+            "name": "address",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "city",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "createdAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "createdBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "district",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "documentInStages",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Customer",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "includeCurrent",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "inheritLocale",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stages",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "email",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "firstname",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "history",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Version",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "limit",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "stageOverride",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "lastname",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "orders",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Order",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "pcode",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "publishedAt",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Any"
+            },
+            "args": []
+          },
+          {
+            "name": "publishedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "scheduledIn",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "ScheduledOperation",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "stage",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "updatedBy",
+            "type": {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "CustomerConnection",
+        "fields": [
+          {
+            "name": "aggregate",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Aggregate",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "edges",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "CustomerEdge",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "pageInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "CustomerEdge",
+        "fields": [
+          {
+            "name": "cursor",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Any"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "node",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Customer",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
         "name": "DocumentVersion",
         "fields": [
           {
@@ -9373,6 +10836,26 @@ export default {
             ]
           },
           {
+            "name": "createCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "createOrder",
             "type": {
               "kind": "OBJECT",
@@ -9517,6 +11000,26 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "Config",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
               "ofType": null
             },
             "args": [
@@ -9709,6 +11212,81 @@ export default {
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ConfigConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteManyCustomers",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteManyCustomersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomerConnection",
                 "ofType": null
               }
             },
@@ -10313,6 +11891,42 @@ export default {
             ]
           },
           {
+            "name": "publishCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "publishManyAssets",
             "type": {
               "kind": "NON_NULL",
@@ -10637,6 +12251,120 @@ export default {
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ConfigConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishManyCustomers",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "publishManyCustomersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomerConnection",
                 "ofType": null
               }
             },
@@ -11486,6 +13214,56 @@ export default {
             ]
           },
           {
+            "name": "schedulePublishCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "to",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "schedulePublishOrder",
             "type": {
               "kind": "OBJECT",
@@ -11810,6 +13588,56 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "Config",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "releaseAt",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "releaseId",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "scheduleUnpublishCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
               "ofType": null
             },
             "args": [
@@ -12184,6 +14012,42 @@ export default {
             ]
           },
           {
+            "name": "unpublishCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "unpublishManyAssets",
             "type": {
               "kind": "NON_NULL",
@@ -12494,6 +14358,120 @@ export default {
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ConfigConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishManyCustomers",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "from",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "unpublishManyCustomersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomerConnection",
                 "ofType": null
               }
             },
@@ -13256,6 +15234,36 @@ export default {
             ]
           },
           {
+            "name": "updateCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "updateManyAssets",
             "type": {
               "kind": "NON_NULL",
@@ -13482,6 +15490,101 @@ export default {
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ConfigConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateManyCustomers",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateManyCustomersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomerConnection",
                 "ofType": null
               }
             },
@@ -14161,6 +16264,36 @@ export default {
             ]
           },
           {
+            "name": "upsertCustomer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "upsert",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
             "name": "upsertOrder",
             "type": {
               "kind": "OBJECT",
@@ -14326,6 +16459,10 @@ export default {
           },
           {
             "kind": "OBJECT",
+            "name": "Customer"
+          },
+          {
+            "kind": "OBJECT",
             "name": "Order"
           },
           {
@@ -14374,6 +16511,29 @@ export default {
             "type": {
               "kind": "OBJECT",
               "name": "User",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Any"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "customer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
               "ofType": null
             },
             "args": [
@@ -14446,17 +16606,6 @@ export default {
                 }
               }
             ]
-          },
-          {
-            "name": "email",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Any"
-              }
-            },
-            "args": []
           },
           {
             "name": "history",
@@ -17328,6 +19477,254 @@ export default {
             ]
           },
           {
+            "name": "customer",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Customer",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "customerVersion",
+            "type": {
+              "kind": "OBJECT",
+              "name": "DocumentVersion",
+              "ofType": null
+            },
+            "args": [
+              {
+                "name": "where",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "customers",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Customer",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
+            "name": "customersConnection",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomerConnection",
+                "ofType": null
+              }
+            },
+            "args": [
+              {
+                "name": "after",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "before",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "first",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "last",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "locales",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "Any"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "orderBy",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "skip",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              },
+              {
+                "name": "stage",
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Any"
+                  }
+                }
+              },
+              {
+                "name": "where",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Any"
+                }
+              }
+            ]
+          },
+          {
             "name": "node",
             "type": {
               "kind": "INTERFACE",
@@ -19485,6 +21882,10 @@ export default {
           {
             "kind": "OBJECT",
             "name": "Config"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Customer"
           },
           {
             "kind": "OBJECT",

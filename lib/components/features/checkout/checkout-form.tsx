@@ -23,7 +23,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ handleSubmitForm }) => {
 		return String(label) === error;
 	};
 
-	const classes = `form-input block w-full py-2 px-3 text-black/80 rounded-md border border-gray-300 shadow focus:border-brand-400/50 focus:ring focus:ring-brand-400/50 focus:ring-opacity-50`;
+	const classes = `form-input block w-full py-2 px-3 text-black/80 rounded-md border border-gray-300 shadow focus:border-gray-300 focus:ring focus:ring-gray-300/60`;
 	return (
 		<form onSubmit={onSubmit} noValidate>
 			<div className="flex items-center gap-6">

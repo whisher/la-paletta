@@ -8,7 +8,7 @@ const Loader: React.FC<LoaderProps> = () => {
 		<div className="flex justify-center items-center">
 			<AiOutlineLoading3Quarters
 				aria-label="Loading...."
-				className="animate-spin text-brand-300 h-8 w-8"
+				className="animate-spin text-brand-300 h-20 w-20"
 			/>
 		</div>
 	);

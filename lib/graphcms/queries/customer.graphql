@@ -1,0 +1,17 @@
+query getCustomer($email: String!, $stage: Stage = PUBLISHED) {
+	customer(where: { email: $email }, stage: $stage) {
+		id
+	}
+}
+
+mutation createCustomerMutation($data: CustomerCreateInput!) {
+	customer: createCustomer(data: $data) {
+		id
+	}
+}
+
+mutation updateCustomerMutation($data: CustomerUpdateInput!, $where: CustomerWhereUniqueInput!) {
+	customer: updateCustomer(data: $data, where: $where) {
+		id
+	}
+}

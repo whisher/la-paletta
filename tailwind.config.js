@@ -18,10 +18,9 @@ module.exports = {
 				brand: {
 					100: '#fcf1f1',
 					200: '#ffd5cd',
-					300: '#9AE66E', // green
-					400: '#ff884f', // orange
-					500: '#00c2ff', // blue
-					600: 'var(--la-paletta-default)'
+					300: 'var(--la-paletta-primary)', // green
+					400: 'var(--la-paletta-secondary)', // orange
+					500: '#00c2ff' // blue
 				},
 				gray: {
 					300: '#cbd5e1',

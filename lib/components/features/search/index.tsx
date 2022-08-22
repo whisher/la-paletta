@@ -7,10 +7,11 @@ import { SearchGrid } from './search-grid';
 
 export interface SearchProps {
 	data: NonNullable<GetSearchQuery>['products'];
+	query: string;
 }
 
-const Search: React.FC<SearchProps> = ({ data }) => {
-	const routes: Breadcrumbs[] = [{ name: 'Search' }];
+const Search: React.FC<SearchProps> = ({ data, query }) => {
+	const routes: Breadcrumbs[] = [{ name: `Search:${query}` }];
 	const hasProducts = data.length > 0;
 
 	return (
