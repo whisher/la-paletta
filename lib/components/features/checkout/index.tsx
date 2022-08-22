@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-
 import { FieldValues } from 'react-hook-form';
-
 import { loadStripe } from '@stripe/stripe-js';
-
 import type { OperationResult } from 'urql';
-
+import { deleteCookie } from 'cookies-next';
+import { COOKIE_CHECKOUT } from '../../../costants';
 import { client } from '@/graphcms/client';
 import {
 	GetCustomerDocument,
@@ -78,6 +76,7 @@ const Checkout: React.FC = () => {
 			await stripe!.redirectToCheckout({
 				sessionId: session.id
 			});
+			deleteCookie(COOKIE_CHECKOUT);
 		} catch (error) {
 			console.error(error);
 		} finally {
