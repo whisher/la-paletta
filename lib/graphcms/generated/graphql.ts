@@ -7942,7 +7942,7 @@ export type GetDoneOrderProductQueryVariables = Exact<{
 }>;
 
 
-export type GetDoneOrderProductQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', id: string, total: number, orderItems: Array<{ __typename?: 'OrderItem', id: string, quantity: number, total: number, product: { __typename?: 'Product', name: string, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null } } | null, productVariantColor: { __typename?: 'ProductVariantColor', id: string, name: string, hex: string | null } | null }> }> };
+export type GetDoneOrderProductQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', id: string, total: number, customer: { __typename?: 'Customer', firstname: string | null, lastname: string | null, address: string | null, district: string | null, city: string | null, pcode: string | null } | null, orderItems: Array<{ __typename?: 'OrderItem', id: string, quantity: number, total: number, product: { __typename?: 'Product', name: string, image: { __typename?: 'Asset', width: number | null, height: number | null, url: string, altText: string | null } } | null, productVariantColor: { __typename?: 'ProductVariantColor', id: string, name: string, hex: string | null } | null }> }> };
 
 export type GetProductsSlugCategoryQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -8083,6 +8083,15 @@ export const GetDoneOrderProduct = gql`
     query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
   orders(first: 1, stage: DRAFT, where: {stripeCheckoutId: $id}) {
     id
+    total
+    customer {
+      firstname
+      lastname
+      address
+      district
+      city
+      pcode
+    }
     orderItems {
       id
       quantity
@@ -8104,7 +8113,6 @@ export const GetDoneOrderProduct = gql`
         hex
       }
     }
-    total
   }
 }
     `;
@@ -8352,6 +8360,15 @@ export const GetDoneOrderProductDocument = gql`
     query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
   orders(first: 1, stage: DRAFT, where: {stripeCheckoutId: $id}) {
     id
+    total
+    customer {
+      firstname
+      lastname
+      address
+      district
+      city
+      pcode
+    }
     orderItems {
       id
       quantity
@@ -8373,7 +8390,6 @@ export const GetDoneOrderProductDocument = gql`
         hex
       }
     }
-    total
   }
 }
     `;

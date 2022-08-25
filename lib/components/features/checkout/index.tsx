@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { loadStripe } from '@stripe/stripe-js';
 import type { OperationResult } from 'urql';
-import { deleteCookie } from 'cookies-next';
-import { COOKIE_CHECKOUT } from '../../../costants';
+import { deleteCookie, setCookie } from 'cookies-next';
+import { COOKIE_CHECKOUT, COOKIE_ACCOUNT } from '../../../costants';
 import { client } from '@/graphcms/client';
 import {
 	GetCustomerDocument,
@@ -17,6 +17,7 @@ import { CheckoutForm } from './checkout-form';
 import { CheckoutOrder } from './checkout-order';
 
 const stripePromise = loadStripe(String(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY));
+
 const upSertCustomer = async (user: FieldValues): Promise<OperationResult<any, { data: any }>> => {
 	const result = await client.query(GetCustomerDocument, { email: user.email }).toPromise();
 	const { customer } = result.data;
@@ -27,15 +28,15 @@ const upSertCustomer = async (user: FieldValues): Promise<OperationResult<any, {
 				data: user
 			})
 			.toPromise();
-	} else {
-		return await client
-			.mutation(UpdateCustomerMutationDocument, {
-				data: user,
-				where: { id: customer.id, email: user.email }
-			})
-			.toPromise();
 	}
+	return await client
+		.mutation(UpdateCustomerMutationDocument, {
+			data: user,
+			where: { id: customer.id, email: user.email }
+		})
+		.toPromise();
 };
+
 const Checkout: React.FC = () => {
 	const { getTotal, getTotalItems, items, toggle } = useCartStore();
 	const [loading, setLoading] = useState(false);
@@ -49,6 +50,7 @@ const Checkout: React.FC = () => {
 			if (!result.data) {
 				throw new Error('No customer id');
 			}
+			account ? setCookie(COOKIE_ACCOUNT, JSON.stringify(user)) : deleteCookie(COOKIE_ACCOUNT);
 			const {
 				customer: { id }
 			} = result.data;

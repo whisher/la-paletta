@@ -45,6 +45,15 @@ query getOrderProduct($pid: ID!, $cid: ID!, $imageWidth: Int = 75, $stage: Stage
 query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
 	orders(first: 1, stage: DRAFT, where: { stripeCheckoutId: $id }) {
 		id
+		total
+		customer {
+			firstname
+			lastname
+			address
+			district
+			city
+			pcode
+		}
 		orderItems {
 			id
 			quantity
@@ -69,6 +78,5 @@ query getDoneOrderProduct($id: String!, $imageWidth: Int = 75) {
 				hex
 			}
 		}
-		total
 	}
 }

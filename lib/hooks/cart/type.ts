@@ -11,16 +11,10 @@ export type ItemDto = {
 	price: number;
 	quantity?: number;
 };
-export interface AccountDto {
-	fullname: string;
-	email: string;
-	address: string;
-}
 
 export type CartState = {
 	items: ItemDto[];
 	open: boolean;
-	account: AccountDto | null;
 	toggle: () => void;
 	addItem: (item: ItemDto, quantity: number) => void;
 	updateQuantityItem: (
@@ -33,11 +27,5 @@ export type CartState = {
 	getTotal: () => number;
 	getTotalItem: (pid: ItemDto['id'], cid: ProductDto['productVariantColors'][0]['id']) => number;
 	removeItem: (item: ItemDto) => void;
-
-	/*emptyCart: () => void;
-	getItem: (
-		id: ItemDto['id'],
-		color: ProductDto['productVariantColors'][0]['id']
-	) => ItemDto | undefined;
-	inCart: (id: ItemDto['id'], color: ProductDto['productVariantColors'][0]['id']) => boolean;*/
+	resetCart: () => void;
 };

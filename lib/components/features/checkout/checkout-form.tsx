@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 
+import { getCookie } from 'cookies-next';
+import { COOKIE_ACCOUNT } from '../../../costants';
 import { Button } from '@/components/ui/button';
 import { CheckoutError } from './checkout-error';
 
@@ -8,11 +10,13 @@ export interface CheckoutFormProps {
 	handleSubmitForm: (data: FieldValues) => void;
 }
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ handleSubmitForm }) => {
+	const account = getCookie(COOKIE_ACCOUNT) as string;
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
-	} = useForm();
+	} = useForm({ defaultValues: account ? JSON.parse(account) : null });
 
 	const onSubmit = handleSubmit((data) => {
 		handleSubmitForm(data);

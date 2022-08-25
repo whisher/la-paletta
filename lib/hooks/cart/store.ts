@@ -10,12 +10,17 @@ const useCartStore = create<CartState>(
 		(set, get) => ({
 			items: [],
 			open: false,
-			account: null,
 			toggle: () => {
 				const { open } = get();
 				set((state) => ({
 					...state,
 					open: !open
+				}));
+			},
+			resetCart: () => {
+				set((state) => ({
+					...state,
+					items: []
 				}));
 			},
 			addItem: (item: ItemDto, quantity: number) => {
