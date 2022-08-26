@@ -10,7 +10,6 @@ export interface StripeSuccessProps {
 
 const StripeSuccess: React.FC<StripeSuccessProps> = ({ data }) => {
 	const { resetCart } = useCartStore();
-	console.log('data', data);
 	const routes: Breadcrumbs[] = [{ name: 'Il tuo acquisto' }];
 	useEffect(() => {
 		resetCart();

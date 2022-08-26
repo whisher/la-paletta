@@ -18,7 +18,6 @@ const SearchPage: NextPage = () => {
 	if (error) {
 		return <Alert />;
 	}
-	console.log(data);
 	return data ? <Search data={data.products} query={search} /> : null;
 };
 
