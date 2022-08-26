@@ -80,7 +80,7 @@ const Checkout: React.FC = () => {
 			});
 			deleteCookie(COOKIE_CHECKOUT);
 		} catch (error) {
-			console.error(error);
+			console.error('ERROR', error);
 		} finally {
 			setLoading(false);
 		}
