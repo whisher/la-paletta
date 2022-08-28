@@ -15,7 +15,7 @@ interface ExtendedNextApiRequest extends NextApiRequest {
 		success_url: string;
 	};
 }
-const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
+const createCheckoutSession = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
 	const { items, user, cancel_url, success_url } = req.body;
 	const getOrderProduct = async (pid: string, cid: string) => {
 		const result = await client.query(GetOrderProductDocument, { pid, cid }).toPromise();

@@ -9,7 +9,7 @@ import {
 } from '@/graphcms/generated/graphql';
 
 import { PRODUCT_WIDTH, PRODUCT_THUMBNAIL } from '../../lib/costants';
-
+import { SEO } from '@/components/ui/seo';
 import { Product } from '@/components/features/product';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -39,7 +39,12 @@ type ProductPageProps = {
 };
 
 const ProductPage: NextPage<ProductPageProps> = ({ data }) => {
-	return data?.product ? <Product data={data.product} /> : null;
+	return data?.product ? (
+		<>
+			<SEO title={data.product.name} image={data.product.image} />
+			<Product data={data.product} />{' '}
+		</>
+	) : null;
 };
 
 export default ProductPage;
