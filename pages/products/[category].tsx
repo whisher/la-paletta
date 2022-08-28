@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import type { NextPage } from 'next';
-
 import { client, loadFromCms } from '@/graphcms/client';
 import {
 	GetCategoriesSlugDocument,

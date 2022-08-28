@@ -1,5 +1,5 @@
 export const routes = {
-	about: '/about',
+	about: '/chi-siamo',
 	products: '/products',
 	product: '/product',
 	checkout: '/checkout'
