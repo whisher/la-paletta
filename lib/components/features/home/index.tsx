@@ -4,6 +4,7 @@ import { GetCategoriesQuery } from '@/graphcms/generated/graphql';
 import { Container } from '@/components/ui/container';
 import { NoData } from '@/components/ui/no-data';
 import { CategoriesGrid } from './categories-grid';
+import { HomeInfo } from './info';
 export interface HomeProps {
 	data: GetCategoriesQuery['categories'];
 }
@@ -17,12 +18,8 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 			<Container>
 				{hasCategories ? <CategoriesGrid data={data} /> : <NoData feature="Category" />}
 			</Container>
-			<div ref={ref} className="h-screen">
-				<div
-					className={`h-40 w-40 bg-black transition duration-1000 delay-1000 ${
-						inView ? 'scale-100' : 'scale-0'
-					}`}
-				></div>
+			<div ref={ref} className="mt-3 mb-32">
+				<HomeInfo inView={inView} />
 			</div>
 		</>
 	);
