@@ -7,7 +7,6 @@ export interface HomeInfoProps {
 }
 
 const HomeInfo: React.FC<HomeInfoProps> = ({ inView }) => {
-	console.log('inView', inView);
 	return (
 		<div className="grid grid-cols-3 place-items-center gap-x-20">
 			<div className={`transition duration-1000 delay-2000 ${inView ? 'scale-100' : 'scale-0'}`}>

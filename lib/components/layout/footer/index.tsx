@@ -9,7 +9,7 @@ import { FooterHeader } from './header';
 
 const Footer: React.FC = () => {
 	return (
-		<footer className="flex flex-col h-[200px] bg-black text-white">
+		<footer className="flex flex-col h-[200px]  mt-32 bg-black text-white">
 			<div className="flex-1 flex px-8 pt-8 bg-black gap-x-20">
 				<div className="w-1/3">
 					<FooterHeader>Contact</FooterHeader>

@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 			<Container>
 				{hasCategories ? <CategoriesGrid data={data} /> : <NoData feature="Category" />}
 			</Container>
-			<div ref={ref} className="mt-3 mb-32">
+			<div ref={ref} className="mt-3">
 				<HomeInfo inView={inView} />
 			</div>
 		</>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 import { ItemDto, useCartStore } from '@/hooks/cart';
@@ -6,7 +6,12 @@ import { CartBottom } from './cart-bottom';
 import { CartIcon } from './cart-icon';
 import { CartGrid } from './cart-grid';
 import { CartNoData } from './cart-no-data';
-const Cart: React.FC = () => {
+
+const Cart: () => false | JSX.Element = () => {
+	const [mount, setMount] = useState(false);
+	useEffect(() => {
+		setMount(true);
+	}, []);
 	const { getTotal, getTotalItems, items, open, removeItem, toggle } = useCartStore();
 
 	const total = getTotal();
@@ -17,46 +22,48 @@ const Cart: React.FC = () => {
 		removeItem(data);
 	};
 	return (
-		<>
-			{open ? (
-				<button
-					className={`fixed right-1.5 top-4 z-50 cursor-pointer bg-trasparent`}
-					onClick={toggle}
-				>
-					<AiFillCloseCircle
-						className={` w-7 h-7 ease-in-out transition ${
-							open ? 'text-gray-400 scale-100' : 'text-white scale-0'
-						}`}
-					/>
-				</button>
-			) : (
-				<CartIcon total={total} totalItems={totalItems} toggle={toggle} />
-			)}
+		mount && (
+			<>
+				{open ? (
+					<button
+						className={`fixed right-1.5 top-4 z-50 cursor-pointer bg-trasparent`}
+						onClick={toggle}
+					>
+						<AiFillCloseCircle
+							className={` w-7 h-7 ease-in-out transition ${
+								open ? 'text-gray-400 scale-100' : 'text-white scale-0'
+							}`}
+						/>
+					</button>
+				) : (
+					<CartIcon total={total} totalItems={totalItems} toggle={toggle} />
+				)}
 
-			<div
-				className={`top-0 right-0 w-screen before:content-[''] before:absolute before:w-full before:h-full before:bg-black/20 fixed h-full z-40 flex justify-end ease-in-out transition duration-200 ${
-					open ? 'translate-x-0 ' : 'translate-x-full'
-				}`}
-			>
-				<aside className="relative w-96 flex flex-col bg-white">
-					<div className="flex flex-col h-full">
-						<h2 className="flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
-							I miei acquisti
-						</h2>
-						<div className="no-scroll mt-4 h-4/6 overflow-y-auto">
-							{hasItems ? (
-								<CartGrid data={items} handlerDeleteItem={handlerDeleteItem} />
-							) : (
-								<CartNoData toggle={toggle} />
-							)}
+				<div
+					className={`top-0 right-0 w-screen before:content-[''] before:absolute before:w-full before:h-full before:bg-black/20 fixed h-full z-40 flex justify-end ease-in-out transition duration-200 ${
+						open ? 'translate-x-0 ' : 'translate-x-full'
+					}`}
+				>
+					<aside className="relative w-96 flex flex-col bg-white">
+						<div className="flex flex-col h-full">
+							<h2 className="flex items-center h-14 px-6 text-xl text-gray-400 border-b border-b-gray-300 bg-white">
+								I miei acquisti
+							</h2>
+							<div className="no-scroll mt-4 h-4/6 overflow-y-auto">
+								{hasItems ? (
+									<CartGrid data={items} handlerDeleteItem={handlerDeleteItem} />
+								) : (
+									<CartNoData toggle={toggle} />
+								)}
+							</div>
+							<div className="flex-1 pt-4 px-6 bg-gray-300/10 rounded-t-lg">
+								{hasItems ? <CartBottom total={total} toggle={toggle} /> : null}
+							</div>
 						</div>
-						<div className="flex-1 pt-4 px-6 bg-gray-300/10 rounded-t-lg">
-							{hasItems ? <CartBottom total={total} toggle={toggle} /> : null}
-						</div>
-					</div>
-				</aside>
-			</div>
-		</>
+					</aside>
+				</div>
+			</>
+		)
 	);
 };
 
